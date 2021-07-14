@@ -1,9 +1,7 @@
-﻿using Newtonsoft.Json;
+using Newtonsoft.Json;
 
-namespace ZendeskSell.Products
-{
-    public class ProductPrice
-    {
+namespace ZendeskSell.Products {
+    public class ProductPrice {
 
         [JsonProperty("amount")]
         public string Amount { get; set; }

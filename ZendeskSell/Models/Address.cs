@@ -1,9 +1,7 @@
-﻿using Newtonsoft.Json;
+using Newtonsoft.Json;
 
-namespace ZendeskSell.Models
-{
-    public class Address
-    {
+namespace ZendeskSell.Models {
+    public class Address {
         [JsonProperty("line1")]
         public string Line1 { get; set; }
         [JsonProperty("city")]

@@ -1,10 +1,8 @@
-﻿using System.Threading.Tasks;
+using System.Threading.Tasks;
 using ZendeskSell.Models;
 
-namespace ZendeskSell.Leads
-{
-    public interface ILeadActions
-    {
+namespace ZendeskSell.Leads {
+    public interface ILeadActions {
         Task<ZendeskSellObjectResponse<LeadResponse>> CreateAsync(LeadRequest lead);
     }
 }

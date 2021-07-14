@@ -1,9 +1,7 @@
-﻿using Newtonsoft.Json;
+using Newtonsoft.Json;
 
-namespace ZendeskSell.Models
-{
-    public class ZendeskResponseMetadata
-    {
+namespace ZendeskSell.Models {
+    public class ZendeskResponseMetadata {
         [JsonProperty("count")]
         public int Count { get; set; }
         [JsonProperty("type")]
@@ -13,8 +11,7 @@ namespace ZendeskSell.Models
 
     }
 
-    public class ZendeskResponseLinkMetadata
-    {
+    public class ZendeskResponseLinkMetadata {
         [JsonProperty("self")]
         public string Self { get; set; }
     }

@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using Newtonsoft.Json;
 
-namespace ZendeskSell.Models
-{
+namespace ZendeskSell.Models {
     public class ZendeskSellRequest<T>
-        where T : class
-    {
-        public ZendeskSellRequest()
-        {
+        where T : class {
+        public ZendeskSellRequest() {
 
         }
 

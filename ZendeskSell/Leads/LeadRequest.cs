@@ -1,14 +1,10 @@
-﻿using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
 using ZendeskSell.Models;
 
-namespace ZendeskSell.Leads
-{
-    public class LeadRequest
-    {
-        public LeadRequest()
-        {
+namespace ZendeskSell.Leads {
+    public class LeadRequest {
+        public LeadRequest() {
             Tags = new string[] { };
             Address = new Address();
         }
@@ -51,6 +47,6 @@ namespace ZendeskSell.Leads
         [JsonProperty("address")]
         public Address Address { get; set; }
         [JsonProperty("tags")]
-        public IEnumerable<string> Tags { get; set; }   
+        public IEnumerable<string> Tags { get; set; }
     }
 }

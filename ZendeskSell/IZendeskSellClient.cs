@@ -1,4 +1,4 @@
-﻿using ZendeskSell.Contacts;
+using ZendeskSell.Contacts;
 using ZendeskSell.Deals;
 using ZendeskSell.Leads;
 using ZendeskSell.LineItems;
@@ -6,10 +6,8 @@ using ZendeskSell.Orders;
 using ZendeskSell.Products;
 using ZendeskSell.Tasks;
 
-namespace ZendeskSell
-{
-    public interface IZendeskSellClient
-    {
+namespace ZendeskSell {
+    public interface IZendeskSellClient {
         IContactActions Contacts { get; }
 
         IDealActions Deals { get; }

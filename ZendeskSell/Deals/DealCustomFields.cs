@@ -1,12 +1,8 @@
-﻿using System;
-using System.Text;
 using Newtonsoft.Json;
 
-namespace ZendeskSell.Deals
-{
+namespace ZendeskSell.Deals {
 
-    public class DealCustomFields
-    {
+    public class DealCustomFields {
         [JsonProperty("id")]
         public int ID { get; set; }
         [JsonProperty("name")]

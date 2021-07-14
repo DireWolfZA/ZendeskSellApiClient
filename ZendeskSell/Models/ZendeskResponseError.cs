@@ -1,10 +1,8 @@
-﻿using System;
+using System;
 using Newtonsoft.Json;
 
-namespace ZendeskSell.Models
-{
-    public class ZendeskResponseError
-    {
+namespace ZendeskSell.Models {
+    public class ZendeskResponseError {
         [JsonProperty("error")]
         public string Error { get; set; }
         [JsonProperty("error_description")]

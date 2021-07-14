@@ -1,10 +1,8 @@
-﻿using System;
+using System;
 using Newtonsoft.Json;
 
-namespace ZendeskSell.Leads
-{
-    public class LeadResponse : LeadRequest
-    {
+namespace ZendeskSell.Leads {
+    public class LeadResponse : LeadRequest {
         [JsonProperty("id")]
         public int ID { get; set; }
         [JsonProperty("creator_id")]
@@ -17,8 +15,7 @@ namespace ZendeskSell.Leads
         public ZenLeadCustomFields CustomFields { get; set; }
     }
 
-    public class ZenLeadCustomFields
-    {
+    public class ZenLeadCustomFields {
         [JsonProperty("known_via")]
         public string KnownVia { get; set; }
     }

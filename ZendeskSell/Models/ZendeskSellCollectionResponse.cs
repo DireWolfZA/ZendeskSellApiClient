@@ -1,11 +1,9 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using Newtonsoft.Json;
 
-namespace ZendeskSell.Models
-{
+namespace ZendeskSell.Models {
     public class ZendeskSellCollectionResponse<T>
-        where T : class
-    {
+        where T : class {
         [JsonProperty("items")]
         public IEnumerable<ZendeskSellObjectResponse<T>> Items { get; set; }
 

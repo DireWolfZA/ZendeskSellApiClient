@@ -1,11 +1,9 @@
-﻿using System;
+using System;
 using Newtonsoft.Json;
 
-namespace ZendeskSell.Tasks
-{
+namespace ZendeskSell.Tasks {
 
-  public class TaskRequest
-  {
+    public class TaskRequest {
         [JsonProperty("resource_type")]
         public string ResourceType { get; set; }
         [JsonProperty("resource_id")]
@@ -18,5 +16,5 @@ namespace ZendeskSell.Tasks
         public DateTimeOffset RemindAt { get; set; }
         [JsonProperty("content")]
         public string Content { get; set; }
-  }
+    }
 }

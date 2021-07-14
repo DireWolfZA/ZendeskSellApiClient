@@ -1,4 +1,3 @@
-﻿using System;
 using RestSharp;
 using ZendeskSell.Contacts;
 using ZendeskSell.Deals;
@@ -8,8 +7,7 @@ using ZendeskSell.Orders;
 using ZendeskSell.Products;
 using ZendeskSell.Tasks;
 
-namespace ZendeskSell
-{
+namespace ZendeskSell {
     public class ZendeskSellClient : IZendeskSellClient {
 
         private readonly string _baseUrl = "https://api.getbase.com/v2";
@@ -18,8 +16,7 @@ namespace ZendeskSell
         /// <summary>
         /// Object Constructor for Zendesk Item!
         /// </summary>
-        public ZendeskSellClient(string accessToken)
-        {
+        public ZendeskSellClient(string accessToken) {
             _client = new RestClient(_baseUrl);
             _client
                 .AddDefaultHeader("Authorization", $"Bearer {accessToken}")
@@ -40,5 +37,5 @@ namespace ZendeskSell
         public IProductActions Products => new ProductActions(_client);
 
         public ITaskActions Tasks => new TaskActions(_client);
-  }
+    }
 }

@@ -1,10 +1,8 @@
-﻿using System;
+using System;
 using Newtonsoft.Json;
 
-namespace ZendeskSell.Deals
-{
-    public class DealResponse : CoreDealResponse
-    {
+namespace ZendeskSell.Deals {
+    public class DealResponse : CoreDealResponse {
         [JsonProperty("id")]
         public int ID { get; set; }
         [JsonProperty("creator_id")]
@@ -23,5 +21,5 @@ namespace ZendeskSell.Deals
         public DateTimeOffset CreatedAt { get; set; }
         [JsonProperty("updated_at")]
         public DateTimeOffset UpdatedAt { get; set; }
-  }
+    }
 }

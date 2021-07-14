@@ -1,10 +1,8 @@
-﻿using System.Threading.Tasks;
+using System.Threading.Tasks;
 using ZendeskSell.Models;
 
-namespace ZendeskSell.Deals
-{
-    public interface IDealActions
-    {
+namespace ZendeskSell.Deals {
+    public interface IDealActions {
         Task<ZendeskSellObjectResponse<DealResponse>> GetAsync(int dealID);
         Task<ZendeskSellCollectionResponse<DealResponse>> GetByNameAsync(string dealName);
         Task<ZendeskSellObjectResponse<DealResponse>> CreateAsync(DealRequest deal);

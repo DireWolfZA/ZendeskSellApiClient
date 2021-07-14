@@ -1,26 +1,23 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
 using ZendeskSell.Models;
 
-namespace ZendeskSell.Contacts
-{
-    public class ContactRequest
-    {
-        public ContactRequest()
-        {
+namespace ZendeskSell.Contacts {
+    public class ContactRequest {
+        public ContactRequest() {
             Tags = new string[] { };
             Address = ShippingAddress = BillingAddress = new Address();
             CustomFields = new ContactCustomFields();
         }
-		[JsonProperty("owner_id")]
-		public int? OwnerID { get; set; }
-		[JsonProperty("is_organization")]
-		public bool IsOrganization { get; set; }
+        [JsonProperty("owner_id")]
+        public int? OwnerID { get; set; }
+        [JsonProperty("is_organization")]
+        public bool IsOrganization { get; set; }
         [JsonProperty("contact_id")]
         public int ContactID { get; set; }
-		[JsonProperty("parent_organization_id")]
-		public int? ParentOrganizationID { get; set; }
+        [JsonProperty("parent_organization_id")]
+        public int? ParentOrganizationID { get; set; }
         [JsonProperty("name")]
         public string Name { get; set; }
         [JsonProperty("first_name")]
@@ -29,10 +26,10 @@ namespace ZendeskSell.Contacts
         public string LastName { get; set; }
         [JsonProperty("title")]
         public string Title { get; set; }
-		[JsonProperty("customer_status")]
-		public string CustomerStatus { get; set; }
-		[JsonProperty("prospect_status")]					   
-		public string ProspectStatus { get; set; }
+        [JsonProperty("customer_status")]
+        public string CustomerStatus { get; set; }
+        [JsonProperty("prospect_status")]
+        public string ProspectStatus { get; set; }
         [JsonProperty("description")]
         public string Description { get; set; }
         [JsonProperty("industry")]
@@ -57,9 +54,9 @@ namespace ZendeskSell.Contacts
         public string Skype { get; set; }
         [JsonProperty("address")]
         public Address Address { get; set; }
-		[JsonProperty("billing_address")]
+        [JsonProperty("billing_address")]
         public Address BillingAddress { get; set; }
-		[JsonProperty("shipping_address")]
+        [JsonProperty("shipping_address")]
         public Address ShippingAddress { get; set; }
         [JsonProperty("tags")]
         public IEnumerable<string> Tags { get; set; }
@@ -67,8 +64,7 @@ namespace ZendeskSell.Contacts
         public ContactCustomFields CustomFields { get; set; }
     }
 
-    public class ContactResponse : ContactRequest
-    {
+    public class ContactResponse : ContactRequest {
         [JsonProperty("id")]
         public int ID { get; set; }
         [JsonProperty("creator_id")]
@@ -79,11 +75,10 @@ namespace ZendeskSell.Contacts
         public DateTimeOffset UpdatedAt { get; set; }
     }
 
-    public class ContactCustomFields
-    {
+    public class ContactCustomFields {
         [JsonProperty("referral_website")]
         public string ReferralWebsite { get; set; }
-		[JsonProperty("known_via")]
-		public string KnownVia { get; set; }
+        [JsonProperty("known_via")]
+        public string KnownVia { get; set; }
     }
 }

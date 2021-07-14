@@ -1,12 +1,9 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using Newtonsoft.Json;
 
-namespace ZendeskSell.Deals
-{
-    public class DealRequest
-    {
-        public DealRequest()
-        {
+namespace ZendeskSell.Deals {
+    public class DealRequest {
+        public DealRequest() {
             Tags = new string[] { };
         }
         [JsonProperty("name")]

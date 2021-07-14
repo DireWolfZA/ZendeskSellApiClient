@@ -1,15 +1,12 @@
-﻿using System.Threading.Tasks;
+using System.Threading.Tasks;
 using RestSharp;
 using ZendeskSell.Models;
 
-namespace ZendeskSell.Leads
-{
-    public class LeadActions : ILeadActions
-    {
+namespace ZendeskSell.Leads {
+    public class LeadActions : ILeadActions {
         private RestClient _client;
 
-        public LeadActions(RestClient client)
-        {
+        public LeadActions(RestClient client) {
             _client = client;
         }
 
@@ -19,8 +16,7 @@ namespace ZendeskSell.Leads
         /// <param name="authorizationString"></param>
         /// <param name="task"></param>
         /// <returns></returns>
-        public async Task<ZendeskSellObjectResponse<LeadResponse>> CreateAsync(LeadRequest lead)
-        {
+        public async Task<ZendeskSellObjectResponse<LeadResponse>> CreateAsync(LeadRequest lead) {
             var request = new RestRequest("leads") { RequestFormat = DataFormat.Json };
             request.JsonSerializer = new RestSharpJsonNetSerializer();
             request.AddJsonBody(new ZendeskSellRequest<LeadRequest>(lead));
