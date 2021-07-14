@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Zendesk.LineItems
+namespace ZendeskSell.LineItems
 {
   /// <summary>
   /// The information pulled from Zendesk about a line item

@@ -1,6 +1,6 @@
 ﻿using RestSharp;
 
-namespace Zendesk.LineItems
+namespace ZendeskSell.LineItems
 {
     public class LineItemActions : ILineItemActions
     {

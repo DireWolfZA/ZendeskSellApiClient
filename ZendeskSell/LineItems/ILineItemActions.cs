@@ -1,4 +1,4 @@
-﻿namespace Zendesk.LineItems
+﻿namespace ZendeskSell.LineItems
 {
     public interface ILineItemActions
     {
