@@ -2,8 +2,7 @@ using System.Collections.Generic;
 using Newtonsoft.Json;
 
 namespace ZendeskSell.Models {
-    public class ZendeskSellObjectResponse<T>
-        where T : class {
+    public class ZendeskSellObjectResponse<T> where T : class {
         [JsonProperty("data")]
         public T Data { get; set; }
 

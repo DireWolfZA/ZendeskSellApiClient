@@ -3,6 +3,7 @@ using RestSharp;
 using RestSharp.Validation;
 using ZendeskSell.Models;
 
+//https://developers.getbase.com/docs/rest/reference/contacts
 namespace ZendeskSell.Contacts {
     public class ContactActions : IContactActions {
         private readonly RestClient _client;

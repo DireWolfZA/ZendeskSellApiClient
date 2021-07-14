@@ -1,8 +1,7 @@
 using Newtonsoft.Json;
 
 namespace ZendeskSell.Models {
-    public class ZendeskSellRequest<T>
-        where T : class {
+    public class ZendeskSellRequest<T> where T : class {
         public ZendeskSellRequest() {
 
         }
