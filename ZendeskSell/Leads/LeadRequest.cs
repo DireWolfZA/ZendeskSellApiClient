@@ -9,7 +9,7 @@ namespace ZendeskSell.Leads {
             Address = new Address();
         }
         [JsonProperty("owner_id")]
-        public int OwnerID { get; set; }
+        public int? OwnerID { get; set; }
         [JsonProperty("first_name")]
         public string FirstName { get; set; }
         [JsonProperty("last_name")]
@@ -19,7 +19,7 @@ namespace ZendeskSell.Leads {
         [JsonProperty("status")]
         public string Status { get; set; }
         [JsonProperty("source_id")]
-        public int SourceID { get; set; }
+        public int? SourceID { get; set; }
         [JsonProperty("title")]
         public string Title { get; set; }
         [JsonProperty("description")]
