@@ -48,5 +48,7 @@ namespace ZendeskSell.Leads {
         public Address Address { get; set; }
         [JsonProperty("tags")]
         public IEnumerable<string> Tags { get; set; }
+        [JsonProperty("custom_fields")]
+        public Dictionary<string, object> CustomFields { get; set; }
     }
 }

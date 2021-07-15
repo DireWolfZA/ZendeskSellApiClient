@@ -11,12 +11,5 @@ namespace ZendeskSell.Leads {
         public DateTime CreatedAt { get; set; }
         [JsonProperty("updated_at")]
         public DateTime UpdatedAt { get; set; }
-        [JsonProperty("custom_fields")]
-        public ZenLeadCustomFields CustomFields { get; set; }
-    }
-
-    public class ZenLeadCustomFields {
-        [JsonProperty("known_via")]
-        public string KnownVia { get; set; }
     }
 }
