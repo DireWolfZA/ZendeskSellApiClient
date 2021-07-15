@@ -24,7 +24,7 @@ namespace ZendeskSell.Contacts {
         }
 
         public async Task<ZendeskSellCollectionResponse<ContactResponse>> GetAsync(int pageNumber, int numPerPage) {
-            var request = new RestRequest("https://api.getbase.com/v2/contacts", Method.GET)
+            var request = new RestRequest("contacts", Method.GET)
                               .AddParameter("page", pageNumber)
                               .AddParameter("per_page", numPerPage);
             return (await _client.ExecuteGetTaskAsync<ZendeskSellCollectionResponse<ContactResponse>>(request)).Data;
