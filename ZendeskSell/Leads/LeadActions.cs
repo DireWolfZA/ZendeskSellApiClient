@@ -36,5 +36,10 @@ namespace ZendeskSell.Leads {
             request.AddJsonBody(new ZendeskSellRequest<LeadRequest>(lead));
             return (await _client.ExecuteTaskAsync<ZendeskSellObjectResponse<LeadResponse>>(request, Method.PUT)).Data;
         }
+
+        public async Task<ZendeskSellDeleteResponse> DeleteAsync(int id) {
+            var request = new RestRequest($"leads/{id}", Method.DELETE);
+            return (await _client.ExecuteTaskAsync<ZendeskSellDeleteResponse>(request, Method.DELETE)).Data;
+        }
     }
 }
