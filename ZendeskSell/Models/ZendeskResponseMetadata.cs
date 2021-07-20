@@ -8,6 +8,8 @@ namespace ZendeskSell.Models {
         public string HTTPStatus { get; set; }
         [JsonProperty("logref")]
         public string Logref { get; set; }
+        [JsonProperty("count")]
+        public int Count { get; set; }
         [JsonProperty("links")]
         public ZendeskResponseLinkMetadata Links { get; set; }
     }
@@ -15,5 +17,7 @@ namespace ZendeskSell.Models {
     public class ZendeskResponseLinkMetadata {
         [JsonProperty("more_info")]
         public string MoreInfo { get; set; }
+        [JsonProperty("self")]
+        public string Self { get; set; }
     }
 }
