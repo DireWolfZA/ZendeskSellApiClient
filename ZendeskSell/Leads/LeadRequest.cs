@@ -7,6 +7,7 @@ namespace ZendeskSell.Leads {
         public LeadRequest() {
             Tags = new string[] { };
             Address = new Address();
+            CustomFields = new Dictionary<string, object>();
         }
         [JsonProperty("owner_id")]
         public int? OwnerID { get; set; }
