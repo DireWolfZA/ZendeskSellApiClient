@@ -8,12 +8,15 @@ namespace ZendeskSell.Deals {
             Tags = new string[] { };
             CustomFields = new Dictionary<string, object>();
         }
+
+        [JsonProperty("value")]
+        public string Value { get; set; }
+        public float GetValue() => float.Parse(Value, System.Globalization.NumberFormatInfo.InvariantInfo);
+
         [JsonProperty("name")]
         public string Name { get; set; }
         [JsonProperty("contact_id")]
         public int? ContactID { get; set; }
-        [JsonProperty("value")]
-        public float Value { get; set; }
         [JsonProperty("currency")]
         public string Currency { get; set; }
         [JsonProperty("owner_id")]
