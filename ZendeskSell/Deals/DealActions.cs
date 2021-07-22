@@ -28,7 +28,6 @@ namespace ZendeskSell.Deals {
             Require.Argument("Hot", deal.Hot);
             Require.Argument("Name", deal.Name);
             Require.Argument("Value", deal.Value);
-            Require.Argument("StageID", deal.StageID);
 
             var request = new RestRequest("deals", Method.POST) { RequestFormat = DataFormat.Json };
             request.JsonSerializer = new RestSharpJsonNetSerializer();
@@ -37,6 +36,11 @@ namespace ZendeskSell.Deals {
         }
 
         public async Task<ZendeskSellObjectResponse<DealResponse>> UpdateAsync(int id, DealRequest deal) {
+            Require.Argument("ContactID", deal.ContactID);
+            Require.Argument("StageID", deal.StageID);
+            Require.Argument("OwnerID", deal.OwnerID);
+            Require.Argument("Value", deal.Value);
+
             var request = new RestRequest($"deals/{id}", Method.PUT) { RequestFormat = DataFormat.Json };
             request.JsonSerializer = new RestSharpJsonNetSerializer();
             request.AddJsonBody(new ZendeskSellRequest<DealRequest>(deal));

@@ -36,7 +36,7 @@ namespace ZendeskSell.Deals {
         [JsonProperty("unqualified_reason_id")]
         public int? UnqualifiedReasonID { get; set; }
         [JsonProperty("estimated_close_date")]
-        public DateTimeOffset EstimatedCloseDate { get; set; }
+        public DateTimeOffset? EstimatedCloseDate { get; set; }
         [JsonProperty("customized_win_likelihood")]
         public int? CustomizedWinLikelihood { get; set; }
         [JsonProperty("tags")]
