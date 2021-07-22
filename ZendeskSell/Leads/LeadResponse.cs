@@ -8,8 +8,8 @@ namespace ZendeskSell.Leads {
         [JsonProperty("creator_id")]
         public int CreatorID { get; set; }
         [JsonProperty("created_at")]
-        public DateTime CreatedAt { get; set; }
+        public DateTimeOffset CreatedAt { get; set; }
         [JsonProperty("updated_at")]
-        public DateTime UpdatedAt { get; set; }
+        public DateTimeOffset UpdatedAt { get; set; }
     }
 }
