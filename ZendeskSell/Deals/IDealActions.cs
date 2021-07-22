@@ -3,10 +3,11 @@ using ZendeskSell.Models;
 
 namespace ZendeskSell.Deals {
     public interface IDealActions {
-        Task<ZendeskSellObjectResponse<DealResponse>> GetAsync(int dealID);
-        Task<ZendeskSellCollectionResponse<DealResponse>> GetByNameAsync(string dealName);
+        Task<ZendeskSellCollectionResponse<DealResponse>> GetAsync(int pageNumber, int numPerPage);
+        Task<ZendeskSellObjectResponse<DealResponse>> GetOneAsync(int id);
         Task<ZendeskSellObjectResponse<DealResponse>> CreateAsync(DealRequest deal);
-        Task<ZendeskSellObjectResponse<DealResponse>> CreateAsync(DealByOwnerRequest deal);
-        Task<ZendeskSellObjectResponse<DealResponse>> UpdateAsync(int dealId, DealResponse updatedDeal);
+        Task<ZendeskSellObjectResponse<DealResponse>> UpdateAsync(int id, DealRequest deal);
+        /// <returns><see langword="null"/> on success</returns>
+        Task<ZendeskSellDeleteResponse> DeleteAsync(int id);
     }
 }
