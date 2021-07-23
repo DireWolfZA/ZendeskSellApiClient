@@ -1,6 +1,7 @@
 using RestSharp;
 using ZendeskSell.Contacts;
 using ZendeskSell.Deals;
+using ZendeskSell.DealSources;
 using ZendeskSell.Leads;
 using ZendeskSell.LineItems;
 using ZendeskSell.Orders;
@@ -27,6 +28,7 @@ namespace ZendeskSell {
         public IContactActions Contacts => new ContactActions(_client);
 
         public IDealActions Deals => new DealActions(_client);
+        public IDealSourceActions DealSources => new DealSourceActions(_client);
 
         public ILeadActions Leads => new LeadActions(_client);
 

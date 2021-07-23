@@ -3,6 +3,7 @@ using RestSharp;
 using RestSharp.Validation;
 using ZendeskSell.Models;
 
+//https://developers.getbase.com/docs/rest/reference/deals
 namespace ZendeskSell.Deals {
     public class DealActions : IDealActions {
         private RestClient _client;
