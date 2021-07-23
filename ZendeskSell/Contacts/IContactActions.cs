@@ -3,9 +3,11 @@ using ZendeskSell.Models;
 
 namespace ZendeskSell.Contacts {
     public interface IContactActions {
-
         Task<ZendeskSellCollectionResponse<ContactResponse>> GetAsync(int pageNumber, int numPerPage);
-
+        Task<ZendeskSellObjectResponse<ContactResponse>> GetOneAsync(int id);
         Task<ZendeskSellObjectResponse<ContactResponse>> CreateAsync(ContactRequest contact);
+        Task<ZendeskSellObjectResponse<ContactResponse>> UpdateAsync(int id, ContactRequest contact);
+        /// <returns><see langword="null"/> on success</returns>
+        Task<ZendeskSellDeleteResponse> DeleteAsync(int id);
     }
 }

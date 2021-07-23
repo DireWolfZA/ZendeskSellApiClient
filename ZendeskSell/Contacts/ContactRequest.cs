@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
 using ZendeskSell.Models;
@@ -7,29 +6,29 @@ namespace ZendeskSell.Contacts {
     public class ContactRequest {
         public ContactRequest() {
             Tags = new string[] { };
-            Address = ShippingAddress = BillingAddress = new Address();
-            CustomFields = new ContactCustomFields();
+            Address = new Address();
+            CustomFields = new Dictionary<string, object>();
         }
-        [JsonProperty("owner_id")]
-        public int? OwnerID { get; set; }
-        [JsonProperty("is_organization")]
-        public bool IsOrganization { get; set; }
-        [JsonProperty("contact_id")]
-        public int ContactID { get; set; }
-        [JsonProperty("parent_organization_id")]
-        public int? ParentOrganizationID { get; set; }
         [JsonProperty("name")]
         public string Name { get; set; }
         [JsonProperty("first_name")]
         public string FirstName { get; set; }
         [JsonProperty("last_name")]
         public string LastName { get; set; }
-        [JsonProperty("title")]
-        public string Title { get; set; }
+        [JsonProperty("owner_id")]
+        public int? OwnerID { get; set; }
+        [JsonProperty("is_organization")]
+        public bool IsOrganization { get; set; }
+        [JsonProperty("contact_id")]
+        public int? ContactID { get; set; }
+        [JsonProperty("parent_organization_id")]
+        public int? ParentOrganizationID { get; set; }
         [JsonProperty("customer_status")]
         public string CustomerStatus { get; set; }
         [JsonProperty("prospect_status")]
         public string ProspectStatus { get; set; }
+        [JsonProperty("title")]
+        public string Title { get; set; }
         [JsonProperty("description")]
         public string Description { get; set; }
         [JsonProperty("industry")]
@@ -61,24 +60,6 @@ namespace ZendeskSell.Contacts {
         [JsonProperty("tags")]
         public IEnumerable<string> Tags { get; set; }
         [JsonProperty("custom_fields")]
-        public ContactCustomFields CustomFields { get; set; }
-    }
-
-    public class ContactResponse : ContactRequest {
-        [JsonProperty("id")]
-        public int ID { get; set; }
-        [JsonProperty("creator_id")]
-        public int CreatorID { get; set; }
-        [JsonProperty("created_at")]
-        public DateTimeOffset CreatedAt { get; set; }
-        [JsonProperty("updated_at")]
-        public DateTimeOffset UpdatedAt { get; set; }
-    }
-
-    public class ContactCustomFields {
-        [JsonProperty("referral_website")]
-        public string ReferralWebsite { get; set; }
-        [JsonProperty("known_via")]
-        public string KnownVia { get; set; }
+        public Dictionary<string, object> CustomFields { get; set; }
     }
 }
