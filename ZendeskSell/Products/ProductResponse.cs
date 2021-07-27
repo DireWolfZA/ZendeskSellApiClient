@@ -1,5 +1,3 @@
-/// Simple Product class to make it easy to import products from zendesk when the application is ran.
-
 using System;
 using Newtonsoft.Json;
 
