@@ -3,12 +3,11 @@ using ZendeskSell.Models;
 
 namespace ZendeskSell.Tasks {
     public interface ITaskActions {
-        /// <summary>
-        /// Creates a task with the information from the passed CreateTaskObject, for the account associated with the authorizationString and returns a json string.
-        /// </summary>
-        /// <param name="authorizationString"></param>
-        /// <param name="task"></param>
-        /// <returns></returns>
-        Task<ZendeskSellObjectResponse<TaskRequest>> CreateAsync(TaskRequest task);
+        Task<ZendeskSellCollectionResponse<TaskResponse>> GetAsync(int pageNumber, int numPerPage);
+        Task<ZendeskSellObjectResponse<TaskResponse>> GetOneAsync(int id);
+        Task<ZendeskSellObjectResponse<TaskResponse>> CreateAsync(TaskRequest task);
+        Task<ZendeskSellObjectResponse<TaskResponse>> UpdateAsync(int id, TaskRequest task);
+        /// <returns><see langword="null"/> on success</returns>
+        Task<ZendeskSellDeleteResponse> DeleteAsync(int id);
     }
 }
