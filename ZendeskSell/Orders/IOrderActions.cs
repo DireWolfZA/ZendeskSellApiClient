@@ -1,13 +1,12 @@
 using System.Threading.Tasks;
-using ZendeskSell.LineItems;
 using ZendeskSell.Models;
 
 namespace ZendeskSell.Orders {
     public interface IOrderActions {
-        Task<ZendeskSellObjectResponse<OrderResponse>> GetByDealIDAsync(int dealID);
-
+        Task<ZendeskSellCollectionResponse<OrderResponse>> GetAsync(int pageNumber, int numPerPage, int? dealID = null);
+        Task<ZendeskSellObjectResponse<OrderResponse>> GetOneAsync(int id);
         Task<ZendeskSellObjectResponse<OrderResponse>> CreateAsync(OrderRequest order);
-
-        Task<ZendeskSellObjectResponse<OrderResponse>> AddLineItemAsync(LineItemData lineItem, int orderID);
+        Task<ZendeskSellObjectResponse<OrderResponse>> UpdateAsync(int id, OrderRequest order);
+        Task<ZendeskSellDeleteResponse> DeleteAsync(int id);
     }
 }
