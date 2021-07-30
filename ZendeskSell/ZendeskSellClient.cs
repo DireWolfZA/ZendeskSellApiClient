@@ -8,6 +8,7 @@ using ZendeskSell.LineItems;
 using ZendeskSell.Orders;
 using ZendeskSell.Products;
 using ZendeskSell.Tasks;
+using ZendeskSell.Users;
 
 namespace ZendeskSell {
     public class ZendeskSellClient : IZendeskSellClient {
@@ -41,5 +42,7 @@ namespace ZendeskSell {
         public IProductActions Products => new ProductActions(_client);
 
         public ITaskActions Tasks => new TaskActions(_client);
+
+        public IUserActions Users => new UserActions(_client);
     }
 }
