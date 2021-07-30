@@ -12,10 +12,17 @@ namespace ZendeskSell.Contacts {
             _client = client;
         }
 
-        public async Task<ZendeskSellCollectionResponse<ContactResponse>> GetAsync(int pageNumber, int numPerPage) {
+        public async Task<ZendeskSellCollectionResponse<ContactResponse>> GetAsync(int pageNumber, int numPerPage,
+                string email = null, string phone = null, string mobile = null) {
             var request = new RestRequest("contacts", Method.GET)
                               .AddParameter("page", pageNumber)
                               .AddParameter("per_page", numPerPage);
+            if (email != null)
+                request.AddParameter("email", email);
+            if (phone != null)
+                request.AddParameter("phone", phone);
+            if (mobile != null)
+                request.AddParameter("mobile", mobile);
             return (await _client.ExecuteTaskAsync<ZendeskSellCollectionResponse<ContactResponse>>(request, Method.GET)).Data;
         }
 

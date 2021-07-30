@@ -11,10 +11,17 @@ namespace ZendeskSell.Leads {
             _client = client;
         }
 
-        public async Task<ZendeskSellCollectionResponse<LeadResponse>> GetAsync(int pageNumber, int numPerPage) {
+        public async Task<ZendeskSellCollectionResponse<LeadResponse>> GetAsync(int pageNumber, int numPerPage,
+                string email = null, string phone = null, string mobile = null) {
             var request = new RestRequest("leads", Method.GET)
                               .AddParameter("page", pageNumber)
                               .AddParameter("per_page", numPerPage);
+            if (email != null)
+                request.AddParameter("email", email);
+            if (phone != null)
+                request.AddParameter("phone", phone);
+            if (mobile != null)
+                request.AddParameter("mobile", mobile);
             return (await _client.ExecuteTaskAsync<ZendeskSellCollectionResponse<LeadResponse>>(request, Method.GET)).Data;
         }
 
