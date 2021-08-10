@@ -11,10 +11,12 @@ namespace ZendeskSell.Users {
             _client = client;
         }
 
-        public async Task<ZendeskSellCollectionResponse<UserResponse>> GetAsync(int pageNumber, int numPerPage) {
+        public async Task<ZendeskSellCollectionResponse<UserResponse>> GetAsync(int pageNumber, int numPerPage, string name = null) {
             var request = new RestRequest("users", Method.GET)
                               .AddParameter("page", pageNumber)
                               .AddParameter("per_page", numPerPage);
+            if (name != null)
+                request.AddParameter("name", name);
             return (await _client.ExecuteTaskAsync<ZendeskSellCollectionResponse<UserResponse>>(request, Method.GET)).Data;
         }
 
