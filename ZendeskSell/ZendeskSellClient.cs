@@ -7,6 +7,7 @@ using ZendeskSell.LeadSources;
 using ZendeskSell.LineItems;
 using ZendeskSell.Orders;
 using ZendeskSell.Products;
+using ZendeskSell.Stages;
 using ZendeskSell.Tasks;
 using ZendeskSell.Users;
 
@@ -40,6 +41,8 @@ namespace ZendeskSell {
         public IOrderActions Orders => new OrderActions(_client);
 
         public IProductActions Products => new ProductActions(_client);
+
+        public IStageActions Stages => new StageActions(_client);
 
         public ITaskActions Tasks => new TaskActions(_client);
 
