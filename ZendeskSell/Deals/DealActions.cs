@@ -12,10 +12,14 @@ namespace ZendeskSell.Deals {
             _client = client;
         }
 
-        public async Task<ZendeskSellCollectionResponse<DealResponse>> GetAsync(int pageNumber, int numPerPage) {
+        public async Task<ZendeskSellCollectionResponse<DealResponse>> GetAsync(int pageNumber, int numPerPage, int? ownerID = null, int? stageID = null) {
             var request = new RestRequest("deals", Method.GET)
                               .AddParameter("page", pageNumber)
                               .AddParameter("per_page", numPerPage);
+            if (ownerID != null)
+                request.AddParameter("owner_id", ownerID);
+            if (stageID != null)
+                request.AddParameter("stage_id", stageID);
             return (await _client.ExecuteTaskAsync<ZendeskSellCollectionResponse<DealResponse>>(request, Method.GET)).Data;
         }
 
