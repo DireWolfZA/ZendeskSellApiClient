@@ -23,7 +23,7 @@ namespace ZendeskSell.Users {
             if (status != null)
                 request.AddParameter("status", status);
             if (confirmed != null)
-                request.AddParameter("confirmed", confirmed);
+                request.AddParameter("confirmed", confirmed.ToString().ToLowerInvariant()); // zendesk sell API requires lowercase boolean values...
             if (email != null)
                 request.AddParameter("email", email);
             return (await _client.ExecuteTaskAsync<ZendeskSellCollectionResponse<UserResponse>>(request, Method.GET)).Data;
