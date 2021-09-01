@@ -3,6 +3,8 @@ using Newtonsoft.Json;
 
 namespace ZendeskSell.Deals {
     public class DealResponse : DealRequest {
+        public string GetLink() => $"https://app.futuresimple.com/sales/deals/{ID}";
+
         [JsonProperty("id")]
         public int ID { get; set; }
         [JsonProperty("creator_id")]
