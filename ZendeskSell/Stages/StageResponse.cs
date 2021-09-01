@@ -3,6 +3,9 @@ using Newtonsoft.Json;
 
 namespace ZendeskSell.Stages {
     public class StageResponse {
+        public StageResponse(StageResponse source) : this() => ClassCopier.Copy(source, this);
+        public StageResponse() { }
+
         [JsonProperty("id")]
         public int ID { get; set; }
         [JsonProperty("name")]

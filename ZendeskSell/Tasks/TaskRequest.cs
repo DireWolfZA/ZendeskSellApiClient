@@ -3,6 +3,9 @@ using Newtonsoft.Json;
 
 namespace ZendeskSell.Tasks {
     public class TaskRequest {
+        public TaskRequest(TaskRequest source) : this() => ClassCopier.Copy(source, this);
+        public TaskRequest() { }
+
         [JsonProperty("content")]
         public string Content { get; set; }
         [JsonProperty("due_date")]

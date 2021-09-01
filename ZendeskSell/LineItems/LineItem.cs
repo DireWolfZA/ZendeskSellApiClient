@@ -3,6 +3,9 @@ using Newtonsoft.Json;
 
 namespace ZendeskSell.LineItems {
     public class LineItemRequest {
+        public LineItemRequest(LineItemRequest source) : this() => ClassCopier.Copy(source, this);
+        public LineItemRequest() { }
+
         [JsonProperty("product_id")]
         public int? ProductID { get; set; }
         [JsonProperty("value")]
@@ -16,6 +19,9 @@ namespace ZendeskSell.LineItems {
     }
 
     public class LineItemResponse : LineItemRequest {
+        public LineItemResponse(LineItemResponse source) : this() => ClassCopier.Copy(source, this);
+        public LineItemResponse() : base() { }
+
         [JsonProperty("id")]
         public int ID { get; set; }
         [JsonProperty("name")]

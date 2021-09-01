@@ -2,6 +2,9 @@ using Newtonsoft.Json;
 
 namespace ZendeskSell.Models {
     public class Address {
+        public Address(Address source) : this() => ClassCopier.Copy(source, this);
+        public Address() { }
+
         [JsonProperty("line1")]
         public string Line1 { get; set; }
         [JsonProperty("city")]

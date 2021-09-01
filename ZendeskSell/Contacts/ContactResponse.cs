@@ -3,6 +3,8 @@ using Newtonsoft.Json;
 
 namespace ZendeskSell.Contacts {
     public class ContactResponse : ContactRequest {
+        public ContactResponse(ContactResponse source) : this() => ClassCopier.Copy(source, this);
+        public ContactResponse() : base() { }
         public string GetLink() => $"https://app.futuresimple.com/crm/contacts/{ID}";
 
         [JsonProperty("id")]

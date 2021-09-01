@@ -4,6 +4,7 @@ using ZendeskSell.Models;
 
 namespace ZendeskSell.Contacts {
     public class ContactRequest {
+        public ContactRequest(ContactRequest source) : this() => ClassCopier.Copy(source, this);
         public ContactRequest() {
             Tags = new string[] { };
             Address = new Address();

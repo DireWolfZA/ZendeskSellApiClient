@@ -4,6 +4,7 @@ using Newtonsoft.Json;
 
 namespace ZendeskSell.Deals {
     public class DealRequest {
+        public DealRequest(DealRequest source) : this() => ClassCopier.Copy(source, this);
         public DealRequest() {
             Tags = new string[] { };
             CustomFields = new Dictionary<string, object>();

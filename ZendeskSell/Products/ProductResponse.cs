@@ -3,6 +3,9 @@ using Newtonsoft.Json;
 
 namespace ZendeskSell.Products {
     public class ProductResponse : ProductRequest {
+        public ProductResponse(ProductResponse source) : this() => ClassCopier.Copy(source, this);
+        public ProductResponse() : base() { }
+
         [JsonProperty("id")]
         public int ID { get; set; }
         [JsonProperty("created_at")]

@@ -4,6 +4,9 @@ using Newtonsoft.Json;
 
 namespace ZendeskSell.Users {
     public class UserResponse {
+        public UserResponse(UserResponse source) : this() => ClassCopier.Copy(source, this);
+        public UserResponse() { }
+
         [JsonProperty("id")]
         public int ID { get; set; }
         [JsonProperty("name")]

@@ -4,6 +4,7 @@ using ZendeskSell.Models;
 
 namespace ZendeskSell.Leads {
     public class LeadRequest {
+        public LeadRequest(LeadRequest source) : this() => ClassCopier.Copy(source, this);
         public LeadRequest() {
             Tags = new string[] { };
             Address = new Address();

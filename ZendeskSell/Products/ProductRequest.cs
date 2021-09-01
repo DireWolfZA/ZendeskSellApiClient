@@ -4,6 +4,7 @@ using Newtonsoft.Json;
 
 namespace ZendeskSell.Products {
     public class ProductRequest {
+        public ProductRequest(ProductRequest source) : this() => ClassCopier.Copy(source, this);
         public ProductRequest() {
             Prices = Enumerable.Empty<ProductPrice>();
         }

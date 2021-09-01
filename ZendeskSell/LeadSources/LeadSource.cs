@@ -3,6 +3,9 @@ using Newtonsoft.Json;
 
 namespace ZendeskSell.LeadSources {
     public class LeadSourceRequest {
+        public LeadSourceRequest(LeadSourceRequest source) : this() => ClassCopier.Copy(source, this);
+        public LeadSourceRequest() { }
+
         [JsonProperty("name")]
         public string Name { get; set; }
         [JsonProperty("resource_type")]
@@ -10,6 +13,9 @@ namespace ZendeskSell.LeadSources {
     }
 
     public class LeadSourceResponse : LeadSourceRequest {
+        public LeadSourceResponse(LeadSourceResponse source) : this() => ClassCopier.Copy(source, this);
+        public LeadSourceResponse() : base() { }
+
         [JsonProperty("id")]
         public int ID { get; set; }
         [JsonProperty("creator_id")]

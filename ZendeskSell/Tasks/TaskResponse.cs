@@ -3,6 +3,9 @@ using Newtonsoft.Json;
 
 namespace ZendeskSell.Tasks {
     public class TaskResponse : TaskRequest {
+        public TaskResponse(TaskResponse source) : this() => ClassCopier.Copy(source, this);
+        public TaskResponse() : base() { }
+
         [JsonProperty("id")]
         public int ID { get; set; }
         [JsonProperty("creator_id")]

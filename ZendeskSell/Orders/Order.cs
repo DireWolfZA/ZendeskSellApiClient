@@ -3,6 +3,9 @@ using Newtonsoft.Json;
 
 namespace ZendeskSell.Orders {
     public class OrderRequest {
+        public OrderRequest(OrderRequest source) : this() => ClassCopier.Copy(source, this);
+        public OrderRequest() { }
+
         [JsonProperty("deal_id")]
         public int? DealID { get; set; }
         [JsonProperty("discount")]
@@ -10,6 +13,9 @@ namespace ZendeskSell.Orders {
     }
 
     public class OrderResponse : OrderRequest {
+        public OrderResponse(OrderResponse source) : this() => ClassCopier.Copy(source, this);
+        public OrderResponse() : base() { }
+
         [JsonProperty("id")]
         public int ID { get; set; }
         [JsonProperty("created_at")]

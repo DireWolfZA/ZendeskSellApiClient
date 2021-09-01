@@ -3,6 +3,8 @@ using Newtonsoft.Json;
 
 namespace ZendeskSell.Leads {
     public class LeadResponse : LeadRequest {
+        public LeadResponse(LeadResponse source) : this() => ClassCopier.Copy(source, this);
+        public LeadResponse() : base() { }
         public string GetLink() => $"https://app.futuresimple.com/leads/{ID}";
 
         [JsonProperty("id")]
