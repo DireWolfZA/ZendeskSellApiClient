@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using RestSharp;
 using RestSharp.Validation;
@@ -12,11 +13,14 @@ namespace ZendeskSell.Contacts {
             _client = client;
         }
 
-        public async Task<ZendeskSellCollectionResponse<ContactResponse>> GetAsync(int pageNumber, int numPerPage,
+        public async Task<ZendeskSellCollectionResponse<ContactResponse>> GetAsync(int pageNumber, int numPerPage, IDictionary<string, string> customFields = null,
                 string email = null, string phone = null, string mobile = null) {
             var request = new RestRequest("contacts", Method.GET)
                               .AddParameter("page", pageNumber)
                               .AddParameter("per_page", numPerPage);
+            if (customFields != null)
+                foreach (var field in customFields)
+                    request.AddParameter($"custom_fields[{field.Key}]", field.Value);
             if (email != null)
                 request.AddParameter("email", email);
             if (phone != null)

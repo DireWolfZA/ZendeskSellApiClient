@@ -1,5 +1,6 @@
 using Newtonsoft.Json;
 
+//https://developers.getbase.com/docs/rest/reference/address
 namespace ZendeskSell.Models {
     public class Address {
         public Address(Address source) : this() => ClassCopier.Copy(source, this);

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using RestSharp;
 using RestSharp.Validation;
@@ -12,10 +13,14 @@ namespace ZendeskSell.Deals {
             _client = client;
         }
 
-        public async Task<ZendeskSellCollectionResponse<DealResponse>> GetAsync(int pageNumber, int numPerPage, int? ownerID = null, int? stageID = null) {
+        public async Task<ZendeskSellCollectionResponse<DealResponse>> GetAsync(int pageNumber, int numPerPage, IDictionary<string, string> customFields = null,
+                int? ownerID = null, int? stageID = null) {
             var request = new RestRequest("deals", Method.GET)
                               .AddParameter("page", pageNumber)
                               .AddParameter("per_page", numPerPage);
+            if (customFields != null)
+                foreach (var field in customFields)
+                    request.AddParameter($"custom_fields[{field.Key}]", field.Value);
             if (ownerID != null)
                 request.AddParameter("owner_id", ownerID);
             if (stageID != null)

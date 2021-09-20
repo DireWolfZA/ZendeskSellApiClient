@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using RestSharp;
 using ZendeskSell.Models;
@@ -11,11 +12,14 @@ namespace ZendeskSell.Leads {
             _client = client;
         }
 
-        public async Task<ZendeskSellCollectionResponse<LeadResponse>> GetAsync(int pageNumber, int numPerPage,
+        public async Task<ZendeskSellCollectionResponse<LeadResponse>> GetAsync(int pageNumber, int numPerPage, IDictionary<string, string> customFields = null,
                 string email = null, string phone = null, string mobile = null, int? ownerID = null) {
             var request = new RestRequest("leads", Method.GET)
                               .AddParameter("page", pageNumber)
                               .AddParameter("per_page", numPerPage);
+            if (customFields != null)
+                foreach (var field in customFields)
+                    request.AddParameter($"custom_fields[{field.Key}]", field.Value);
             if (email != null)
                 request.AddParameter("email", email);
             if (phone != null)
