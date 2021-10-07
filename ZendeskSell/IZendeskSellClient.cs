@@ -1,6 +1,7 @@
 using ZendeskSell.Contacts;
 using ZendeskSell.Deals;
 using ZendeskSell.DealSources;
+using ZendeskSell.LeadConversions;
 using ZendeskSell.Leads;
 using ZendeskSell.LeadSources;
 using ZendeskSell.LineItems;
@@ -19,6 +20,7 @@ namespace ZendeskSell {
 
         ILeadActions Leads { get; }
         ILeadSourceActions LeadSources { get; }
+        ILeadConversionActions LeadConversions { get; }
 
         ILineItemActions LineItems { get; }
 
