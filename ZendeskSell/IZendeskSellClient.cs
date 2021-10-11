@@ -7,6 +7,7 @@ using ZendeskSell.LeadSources;
 using ZendeskSell.LineItems;
 using ZendeskSell.Orders;
 using ZendeskSell.Products;
+using ZendeskSell.SequenceEnrollments;
 using ZendeskSell.Stages;
 using ZendeskSell.Tasks;
 using ZendeskSell.Users;
@@ -27,6 +28,8 @@ namespace ZendeskSell {
         IOrderActions Orders { get; }
 
         IProductActions Products { get; }
+
+        ISequenceEnrollmentActions SequenceEnrollments { get; }
 
         IStageActions Stages { get; }
 
