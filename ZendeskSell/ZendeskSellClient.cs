@@ -1,5 +1,6 @@
 using RestSharp;
 using ZendeskSell.Contacts;
+using ZendeskSell.CustomFields;
 using ZendeskSell.Deals;
 using ZendeskSell.DealSources;
 using ZendeskSell.LeadConversions;
@@ -31,6 +32,8 @@ namespace ZendeskSell {
         }
 
         public IContactActions Contacts => new ContactActions(_client);
+
+        public ICustomFieldActions CustomFields => new CustomFieldActions(_client);
 
         public IDealActions Deals => new DealActions(_client);
         public IDealSourceActions DealSources => new DealSourceActions(_client);

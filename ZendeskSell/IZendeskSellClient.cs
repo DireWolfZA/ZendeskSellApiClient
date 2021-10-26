@@ -1,4 +1,5 @@
 using ZendeskSell.Contacts;
+using ZendeskSell.CustomFields;
 using ZendeskSell.Deals;
 using ZendeskSell.DealSources;
 using ZendeskSell.LeadConversions;
@@ -15,6 +16,8 @@ using ZendeskSell.Users;
 namespace ZendeskSell {
     public interface IZendeskSellClient {
         IContactActions Contacts { get; }
+
+        ICustomFieldActions CustomFields { get; }
 
         IDealActions Deals { get; }
         IDealSourceActions DealSources { get; }
