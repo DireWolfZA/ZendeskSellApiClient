@@ -30,21 +30,21 @@ namespace ZendeskSell.CustomFields {
     }
 
     public static class ZendeskTypeToDotNetType {
-        public static Type GetType(string type) {
-            return new Dictionary<string, Type>() {
-                { "address", typeof(Models.Address) },
-                { "bool", typeof(bool) },
-                { "date", typeof(string) },
-                { "datetime", typeof(string) },
-                { "email", typeof(string) },
-                { "list", typeof(string) },
-                { "multi_select_list", typeof(IEnumerable<string>) },
-                { "number", typeof(string) },
-                { "phone", typeof(string) },
-                { "string", typeof(string) },
-                { "text", typeof(string) },
-                { "url", typeof(string) }
-            }[type];
-        }
+        public static Dictionary<string, Type> typeMap = new Dictionary<string, Type>() {
+            { "address", typeof(Models.Address) },
+            { "bool", typeof(bool) },
+            { "date", typeof(string) },
+            { "datetime", typeof(string) },
+            { "email", typeof(string) },
+            { "list", typeof(string) },
+            { "multi_select_list", typeof(IEnumerable<string>) },
+            { "number", typeof(string) },
+            { "phone", typeof(string) },
+            { "string", typeof(string) },
+            { "text", typeof(string) },
+            { "url", typeof(string) }
+        };
+
+        public static Type GetType(string type) => typeMap[type];
     }
 }
