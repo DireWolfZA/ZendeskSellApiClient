@@ -12,13 +12,13 @@ namespace ZendeskSell.Deals {
         [JsonProperty("creator_id")]
         public int CreatorID { get; set; }
         [JsonProperty("last_stage_change_by_id")]
-        public string LastStageChangeByID { get; set; }
+        public int? LastStageChangeByID { get; set; }
         [JsonProperty("last_activity_at")]
         public DateTimeOffset LastActivityAt { get; set; }
         [JsonProperty("dropbox_email")]
         public string DropboxEmail { get; set; }
         [JsonProperty("organization_id")]
-        public int OrganizationID { get; set; }
+        public int? OrganizationID { get; set; }
         [JsonProperty("created_at")]
         public DateTimeOffset CreatedAt { get; set; }
         [JsonProperty("updated_at")]

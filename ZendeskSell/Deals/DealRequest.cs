@@ -17,7 +17,7 @@ namespace ZendeskSell.Deals {
         [JsonProperty("name")]
         public string Name { get; set; }
         [JsonProperty("contact_id")]
-        public int? ContactID { get; set; }
+        public int ContactID { get; set; }
         [JsonProperty("currency")]
         public string Currency { get; set; }
         [JsonProperty("owner_id")]
@@ -27,9 +27,9 @@ namespace ZendeskSell.Deals {
         [JsonProperty("stage_id")]
         public int? StageID { get; set; }
         [JsonProperty("last_stage_change_at")]
-        public DateTimeOffset LastStageChangeAt { get; set; }
+        public DateTimeOffset? LastStageChangeAt { get; set; }
         [JsonProperty("added_at")]
-        public DateTimeOffset AddedAt { get; set; }
+        public DateTimeOffset? AddedAt { get; set; }
         [JsonProperty("source_id")]
         public int? SourceID { get; set; }
         [JsonProperty("loss_reason_id")]
