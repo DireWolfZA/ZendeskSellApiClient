@@ -1,7 +1,9 @@
 using ZendeskSell.Contacts;
 using ZendeskSell.CustomFields;
+using ZendeskSell.DealLossReasons;
 using ZendeskSell.Deals;
 using ZendeskSell.DealSources;
+using ZendeskSell.DealUnqualifiedReasons;
 using ZendeskSell.LeadConversions;
 using ZendeskSell.Leads;
 using ZendeskSell.LeadSources;
@@ -21,6 +23,8 @@ namespace ZendeskSell {
 
         IDealActions Deals { get; }
         IDealSourceActions DealSources { get; }
+        IDealLossReasonActions DealLossReasons { get; }
+        IDealUnqualifiedReasonActions DealUnqualifiedReasons { get; }
 
         ILeadActions Leads { get; }
         ILeadSourceActions LeadSources { get; }

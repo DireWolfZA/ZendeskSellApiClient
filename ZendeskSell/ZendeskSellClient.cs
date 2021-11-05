@@ -1,8 +1,10 @@
 using RestSharp;
 using ZendeskSell.Contacts;
 using ZendeskSell.CustomFields;
+using ZendeskSell.DealLossReasons;
 using ZendeskSell.Deals;
 using ZendeskSell.DealSources;
+using ZendeskSell.DealUnqualifiedReasons;
 using ZendeskSell.LeadConversions;
 using ZendeskSell.Leads;
 using ZendeskSell.LeadSources;
@@ -37,6 +39,8 @@ namespace ZendeskSell {
 
         public IDealActions Deals => new DealActions(_client);
         public IDealSourceActions DealSources => new DealSourceActions(_client);
+        public IDealLossReasonActions DealLossReasons => new DealLossReasonActions(_client);
+        public IDealUnqualifiedReasonActions DealUnqualifiedReasons => new DealUnqualifiedReasonActions(_client);
 
         public ILeadActions Leads => new LeadActions(_client);
         public ILeadSourceActions LeadSources => new LeadSourceActions(_client);
