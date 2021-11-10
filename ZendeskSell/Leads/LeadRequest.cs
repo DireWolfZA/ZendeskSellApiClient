@@ -6,8 +6,8 @@ namespace ZendeskSell.Leads {
     public class LeadRequest {
         public LeadRequest(LeadRequest source) : this() => ClassCopier.Copy(source, this);
         public LeadRequest() {
-            Tags = new string[] { };
             Address = new Address();
+            Tags = new string[] { };
             CustomFields = new Dictionary<string, object>();
         }
         [JsonProperty("owner_id")]

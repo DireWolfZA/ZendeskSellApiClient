@@ -6,8 +6,10 @@ namespace ZendeskSell.Contacts {
     public class ContactRequest {
         public ContactRequest(ContactRequest source) : this() => ClassCopier.Copy(source, this);
         public ContactRequest() {
-            Tags = new string[] { };
             Address = new Address();
+            BillingAddress = new Address();
+            ShippingAddress = new Address();
+            Tags = new string[] { };
             CustomFields = new Dictionary<string, object>();
         }
         [JsonProperty("name")]
