@@ -7,6 +7,7 @@ namespace ZendeskSell.Orders {
         Task<ZendeskSellObjectResponse<OrderResponse>> GetOneAsync(int id);
         Task<ZendeskSellObjectResponse<OrderResponse>> CreateAsync(OrderRequest order);
         Task<ZendeskSellObjectResponse<OrderResponse>> UpdateAsync(int id, OrderRequest order);
+        /// <returns><see langword="null"/> on success</returns>
         Task<ZendeskSellDeleteResponse> DeleteAsync(int id);
     }
 }

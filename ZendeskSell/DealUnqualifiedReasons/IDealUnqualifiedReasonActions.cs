@@ -7,6 +7,7 @@ namespace ZendeskSell.DealUnqualifiedReasons {
         Task<ZendeskSellObjectResponse<DealUnqualifiedReasonResponse>> GetOneAsync(int id);
         Task<ZendeskSellObjectResponse<DealUnqualifiedReasonResponse>> CreateAsync(DealUnqualifiedReasonRequest reason);
         Task<ZendeskSellObjectResponse<DealUnqualifiedReasonResponse>> UpdateAsync(int id, DealUnqualifiedReasonRequest reason);
+        /// <returns><see langword="null"/> on success</returns>
         Task<ZendeskSellDeleteResponse> DeleteAsync(int id);
     }
 }

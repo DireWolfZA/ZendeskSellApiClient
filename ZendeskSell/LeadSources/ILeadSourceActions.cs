@@ -7,6 +7,7 @@ namespace ZendeskSell.LeadSources {
         Task<ZendeskSellObjectResponse<LeadSourceResponse>> GetOneAsync(int id);
         Task<ZendeskSellObjectResponse<LeadSourceResponse>> CreateAsync(LeadSourceRequest dealSource);
         Task<ZendeskSellObjectResponse<LeadSourceResponse>> UpdateAsync(int id, LeadSourceRequest dealSource);
+        /// <returns><see langword="null"/> on success</returns>
         Task<ZendeskSellDeleteResponse> DeleteAsync(int id);
     }
 }

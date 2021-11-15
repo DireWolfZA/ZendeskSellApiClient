@@ -7,6 +7,7 @@ namespace ZendeskSell.DealLossReasons {
         Task<ZendeskSellObjectResponse<DealLossReasonResponse>> GetOneAsync(int id);
         Task<ZendeskSellObjectResponse<DealLossReasonResponse>> CreateAsync(DealLossReasonRequest reason);
         Task<ZendeskSellObjectResponse<DealLossReasonResponse>> UpdateAsync(int id, DealLossReasonRequest reason);
+        /// <returns><see langword="null"/> on success</returns>
         Task<ZendeskSellDeleteResponse> DeleteAsync(int id);
     }
 }
