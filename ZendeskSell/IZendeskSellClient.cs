@@ -8,6 +8,7 @@ using ZendeskSell.LeadConversions;
 using ZendeskSell.Leads;
 using ZendeskSell.LeadSources;
 using ZendeskSell.LineItems;
+using ZendeskSell.Notes;
 using ZendeskSell.Orders;
 using ZendeskSell.Products;
 using ZendeskSell.SequenceEnrollments;
@@ -31,6 +32,8 @@ namespace ZendeskSell {
         ILeadConversionActions LeadConversions { get; }
 
         ILineItemActions LineItems { get; }
+
+        INoteActions Notes { get; }
 
         IOrderActions Orders { get; }
 
