@@ -13,11 +13,11 @@ namespace ZendeskSell {
         /// <summary>
         /// Default serializer
         /// </summary>
-        public RestSharpJsonNetSerializer() {
+        public RestSharpJsonNetSerializer(bool includeNullValues = true) {
             ContentType = "application/json";
             _serializer = new Newtonsoft.Json.JsonSerializer {
                 MissingMemberHandling = MissingMemberHandling.Ignore,
-                NullValueHandling = NullValueHandling.Include,
+                NullValueHandling = includeNullValues ? NullValueHandling.Include : NullValueHandling.Ignore,
                 DefaultValueHandling = DefaultValueHandling.Include,
             };
         }

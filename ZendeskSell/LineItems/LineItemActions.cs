@@ -27,11 +27,9 @@ namespace ZendeskSell.LineItems {
         public async Task<ZendeskSellObjectResponse<LineItemResponse>> CreateAsync(int orderID, LineItemRequest lineItem) {
             Require.Argument("Currency", lineItem.Currency);
             Require.Argument("ProductID", lineItem.ProductID);
-            Require.Argument("Value", lineItem.Value);
-            Require.Argument("Variation", lineItem.Variation);
 
             var request = new RestRequest($"orders/{orderID}/line_items", Method.POST) { RequestFormat = DataFormat.Json };
-            request.JsonSerializer = new RestSharpJsonNetSerializer();
+            request.JsonSerializer = new RestSharpJsonNetSerializer(includeNullValues: false);
             request.AddJsonBody(new ZendeskSellRequest<LineItemRequest>(lineItem));
             return (await _client.ExecuteTaskAsync<ZendeskSellObjectResponse<LineItemResponse>>(request, Method.POST)).Data;
         }

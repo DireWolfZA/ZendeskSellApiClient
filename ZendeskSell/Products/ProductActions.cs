@@ -26,28 +26,20 @@ namespace ZendeskSell.Products {
 
         public async Task<ZendeskSellObjectResponse<ProductResponse>> CreateAsync(ProductRequest product) {
             Require.Argument("Name", product.Name);
-            Require.Argument("Description", product.Description);
-            Require.Argument("SKU", product.SKU);
-            Require.Argument("Cost", product.Cost);
-            Require.Argument("CostCurrency", product.CostCurrency);
             Require.Argument("Prices", product.Prices); // Prices property is initialized when class is created, so this doesn't help... (must have at least one price)
 
             var request = new RestRequest("products", Method.POST) { RequestFormat = DataFormat.Json };
-            request.JsonSerializer = new RestSharpJsonNetSerializer();
+            request.JsonSerializer = new RestSharpJsonNetSerializer(includeNullValues: false);
             request.AddJsonBody(new ZendeskSellRequest<ProductRequest>(product));
             return (await _client.ExecuteTaskAsync<ZendeskSellObjectResponse<ProductResponse>>(request, Method.POST)).Data;
         }
 
         public async Task<ZendeskSellObjectResponse<ProductResponse>> UpdateAsync(int id, ProductRequest product) {
             Require.Argument("Name", product.Name);
-            Require.Argument("Description", product.Description);
-            Require.Argument("SKU", product.SKU);
-            Require.Argument("Cost", product.Cost);
-            Require.Argument("CostCurrency", product.CostCurrency);
             Require.Argument("Prices", product.Prices);
 
             var request = new RestRequest($"products/{id}", Method.PUT) { RequestFormat = DataFormat.Json };
-            request.JsonSerializer = new RestSharpJsonNetSerializer();
+            request.JsonSerializer = new RestSharpJsonNetSerializer(includeNullValues: false);
             request.AddJsonBody(new ZendeskSellRequest<ProductRequest>(product));
             return (await _client.ExecuteTaskAsync<ZendeskSellObjectResponse<ProductResponse>>(request, Method.PUT)).Data;
         }
