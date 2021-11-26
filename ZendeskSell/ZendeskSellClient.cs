@@ -8,6 +8,7 @@ using ZendeskSell.DealUnqualifiedReasons;
 using ZendeskSell.LeadConversions;
 using ZendeskSell.Leads;
 using ZendeskSell.LeadSources;
+using ZendeskSell.LeadUnqualifiedReasons;
 using ZendeskSell.LineItems;
 using ZendeskSell.Notes;
 using ZendeskSell.Orders;
@@ -45,6 +46,7 @@ namespace ZendeskSell {
 
         public ILeadActions Leads => new LeadActions(_client);
         public ILeadSourceActions LeadSources => new LeadSourceActions(_client);
+        public ILeadUnqualifiedReasonActions LeadUnqualifiedReasons => new LeadUnqualifiedReasonActions(_client);
         public ILeadConversionActions LeadConversions => new LeadConversionActions(_client);
 
         public ILineItemActions LineItems => new LineItemActions(_client);

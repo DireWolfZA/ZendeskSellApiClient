@@ -22,6 +22,8 @@ namespace ZendeskSell.Leads {
         public string Status { get; set; }
         [JsonProperty("source_id")]
         public int? SourceID { get; set; }
+        [JsonProperty("unqualified_reason_id")]
+        public int? UnqualifiedReasonID { get; set; }
         [JsonProperty("title")]
         public string Title { get; set; }
         [JsonProperty("description")]

@@ -7,6 +7,7 @@ using ZendeskSell.DealUnqualifiedReasons;
 using ZendeskSell.LeadConversions;
 using ZendeskSell.Leads;
 using ZendeskSell.LeadSources;
+using ZendeskSell.LeadUnqualifiedReasons;
 using ZendeskSell.LineItems;
 using ZendeskSell.Notes;
 using ZendeskSell.Orders;
@@ -29,6 +30,7 @@ namespace ZendeskSell {
 
         ILeadActions Leads { get; }
         ILeadSourceActions LeadSources { get; }
+        ILeadUnqualifiedReasonActions LeadUnqualifiedReasons { get; }
         ILeadConversionActions LeadConversions { get; }
 
         ILineItemActions LineItems { get; }
