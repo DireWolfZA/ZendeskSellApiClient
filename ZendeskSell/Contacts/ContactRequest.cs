@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Newtonsoft.Json;
 using ZendeskSell.Models;
+using ZendeskSell.Utils;
 
 namespace ZendeskSell.Contacts {
     public class ContactRequest {

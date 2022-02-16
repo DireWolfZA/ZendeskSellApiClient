@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Newtonsoft.Json;
+using ZendeskSell.Utils;
 
 namespace ZendeskSell.Notes {
     public class NoteRequest {

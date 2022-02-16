@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using RestSharp;
-using RestSharp.Validation;
 using ZendeskSell.Models;
+using ZendeskSell.Utils;
 
 //https://developers.getbase.com/docs/rest/reference/contacts
 namespace ZendeskSell.Contacts {
@@ -27,12 +27,12 @@ namespace ZendeskSell.Contacts {
                 request.AddParameter("phone", phone);
             if (mobile != null)
                 request.AddParameter("mobile", mobile);
-            return (await _client.ExecuteTaskAsync<ZendeskSellCollectionResponse<ContactResponse>>(request, Method.GET)).Data;
+            return (await _client.ExecuteAsync<ZendeskSellCollectionResponse<ContactResponse>>(request, Method.GET)).Data;
         }
 
         public async Task<ZendeskSellObjectResponse<ContactResponse>> GetOneAsync(int id) {
             var request = new RestRequest($"contacts/{id}", Method.GET);
-            return (await _client.ExecuteTaskAsync<ZendeskSellObjectResponse<ContactResponse>>(request, Method.GET)).Data;
+            return (await _client.ExecuteAsync<ZendeskSellObjectResponse<ContactResponse>>(request, Method.GET)).Data;
         }
 
         public async Task<ZendeskSellObjectResponse<ContactResponse>> CreateAsync(ContactRequest contact) {
@@ -43,7 +43,7 @@ namespace ZendeskSell.Contacts {
             var request = new RestRequest("contacts", Method.POST) { RequestFormat = DataFormat.Json };
             request.JsonSerializer = new RestSharpJsonNetSerializer();
             request.AddJsonBody(new ZendeskSellRequest<ContactRequest>(contact));
-            return (await _client.ExecuteTaskAsync<ZendeskSellObjectResponse<ContactResponse>>(request, Method.POST)).Data;
+            return (await _client.ExecuteAsync<ZendeskSellObjectResponse<ContactResponse>>(request, Method.POST)).Data;
         }
 
         public async Task<ZendeskSellObjectResponse<ContactResponse>> UpdateAsync(int id, ContactRequest contact) {
@@ -53,12 +53,12 @@ namespace ZendeskSell.Contacts {
             var request = new RestRequest($"contacts/{id}", Method.PUT) { RequestFormat = DataFormat.Json };
             request.JsonSerializer = new RestSharpJsonNetSerializer();
             request.AddJsonBody(new ZendeskSellRequest<ContactRequest>(contact));
-            return (await _client.ExecuteTaskAsync<ZendeskSellObjectResponse<ContactResponse>>(request, Method.PUT)).Data;
+            return (await _client.ExecuteAsync<ZendeskSellObjectResponse<ContactResponse>>(request, Method.PUT)).Data;
         }
 
         public async Task<ZendeskSellDeleteResponse> DeleteAsync(int id) {
             var request = new RestRequest($"contacts/{id}", Method.DELETE);
-            return (await _client.ExecuteTaskAsync<ZendeskSellDeleteResponse>(request, Method.DELETE)).Data;
+            return (await _client.ExecuteAsync<ZendeskSellDeleteResponse>(request, Method.DELETE)).Data;
         }
     }
 }

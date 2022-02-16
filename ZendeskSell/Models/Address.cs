@@ -1,4 +1,5 @@
 using Newtonsoft.Json;
+using ZendeskSell.Utils;
 
 //https://developers.getbase.com/docs/rest/reference/address
 namespace ZendeskSell.Models {

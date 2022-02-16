@@ -1,5 +1,6 @@
 using System;
 using Newtonsoft.Json;
+using ZendeskSell.Utils;
 
 namespace ZendeskSell.DealUnqualifiedReasons {
     public class DealUnqualifiedReasonRequest {

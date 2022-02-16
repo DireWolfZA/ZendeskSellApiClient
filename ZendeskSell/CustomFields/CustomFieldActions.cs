@@ -13,19 +13,19 @@ namespace ZendeskSell.CustomFields {
 
         public async Task<ZendeskSellCollectionResponse<CustomFieldResponse>> GetLeads() {
             var request = new RestRequest("lead/custom_fields", Method.GET);
-            return (await _client.ExecuteTaskAsync<ZendeskSellCollectionResponse<CustomFieldResponse>>(request, Method.GET)).Data;
+            return (await _client.ExecuteAsync<ZendeskSellCollectionResponse<CustomFieldResponse>>(request, Method.GET)).Data;
         }
         public async Task<ZendeskSellCollectionResponse<CustomFieldResponse>> GetContacts() {
             var request = new RestRequest("contact/custom_fields", Method.GET);
-            return (await _client.ExecuteTaskAsync<ZendeskSellCollectionResponse<CustomFieldResponse>>(request, Method.GET)).Data;
+            return (await _client.ExecuteAsync<ZendeskSellCollectionResponse<CustomFieldResponse>>(request, Method.GET)).Data;
         }
         public async Task<ZendeskSellCollectionResponse<CustomFieldResponse>> GetDeals() {
             var request = new RestRequest("deal/custom_fields", Method.GET);
-            return (await _client.ExecuteTaskAsync<ZendeskSellCollectionResponse<CustomFieldResponse>>(request, Method.GET)).Data;
+            return (await _client.ExecuteAsync<ZendeskSellCollectionResponse<CustomFieldResponse>>(request, Method.GET)).Data;
         }
         public async Task<ZendeskSellCollectionResponse<CustomFieldResponse>> GetProspectAndCustomers() {
             var request = new RestRequest("prospect_and_customer/custom_fields", Method.GET);
-            return (await _client.ExecuteTaskAsync<ZendeskSellCollectionResponse<CustomFieldResponse>>(request, Method.GET)).Data;
+            return (await _client.ExecuteAsync<ZendeskSellCollectionResponse<CustomFieldResponse>>(request, Method.GET)).Data;
         }
     }
 }

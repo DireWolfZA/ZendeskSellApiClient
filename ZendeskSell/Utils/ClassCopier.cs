@@ -1,7 +1,7 @@
 using System;
 using System.Reflection;
 
-namespace ZendeskSell {
+namespace ZendeskSell.Utils {
     static class ClassCopier {
         public static void Copy<T>(T source, T target) where T : class {
             if (source == null)

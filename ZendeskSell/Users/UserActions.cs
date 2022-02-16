@@ -26,17 +26,17 @@ namespace ZendeskSell.Users {
                 request.AddParameter("confirmed", confirmed.ToString().ToLowerInvariant()); // zendesk sell API requires lowercase boolean values...
             if (email != null)
                 request.AddParameter("email", email);
-            return (await _client.ExecuteTaskAsync<ZendeskSellCollectionResponse<UserResponse>>(request, Method.GET)).Data;
+            return (await _client.ExecuteAsync<ZendeskSellCollectionResponse<UserResponse>>(request, Method.GET)).Data;
         }
 
         public async Task<ZendeskSellObjectResponse<UserResponse>> GetOneAsync(int id) {
             var request = new RestRequest($"users/{id}", Method.GET);
-            return (await _client.ExecuteTaskAsync<ZendeskSellObjectResponse<UserResponse>>(request, Method.GET)).Data;
+            return (await _client.ExecuteAsync<ZendeskSellObjectResponse<UserResponse>>(request, Method.GET)).Data;
         }
 
         public async Task<ZendeskSellObjectResponse<UserResponse>> GetCurrentAsync() {
             var request = new RestRequest($"users/self", Method.GET);
-            return (await _client.ExecuteTaskAsync<ZendeskSellObjectResponse<UserResponse>>(request, Method.GET)).Data;
+            return (await _client.ExecuteAsync<ZendeskSellObjectResponse<UserResponse>>(request, Method.GET)).Data;
         }
     }
 }

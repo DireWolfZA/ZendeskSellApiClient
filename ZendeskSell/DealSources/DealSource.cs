@@ -1,5 +1,6 @@
 using System;
 using Newtonsoft.Json;
+using ZendeskSell.Utils;
 
 namespace ZendeskSell.DealSources {
     public class DealSourceRequest {

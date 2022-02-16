@@ -1,7 +1,7 @@
 using System.Threading.Tasks;
 using RestSharp;
-using RestSharp.Validation;
 using ZendeskSell.Models;
+using ZendeskSell.Utils;
 
 //https://developers.getbase.com/docs/rest/reference/products
 namespace ZendeskSell.Products {
@@ -16,12 +16,12 @@ namespace ZendeskSell.Products {
             var request = new RestRequest("products", Method.GET)
                               .AddParameter("page", pageNumber)
                               .AddParameter("per_page", numPerPage);
-            return (await _client.ExecuteTaskAsync<ZendeskSellCollectionResponse<ProductResponse>>(request, Method.GET)).Data;
+            return (await _client.ExecuteAsync<ZendeskSellCollectionResponse<ProductResponse>>(request, Method.GET)).Data;
         }
 
         public async Task<ZendeskSellObjectResponse<ProductResponse>> GetOneAsync(int id) {
             var request = new RestRequest($"products/{id}", Method.GET);
-            return (await _client.ExecuteTaskAsync<ZendeskSellObjectResponse<ProductResponse>>(request, Method.GET)).Data;
+            return (await _client.ExecuteAsync<ZendeskSellObjectResponse<ProductResponse>>(request, Method.GET)).Data;
         }
 
         public async Task<ZendeskSellObjectResponse<ProductResponse>> CreateAsync(ProductRequest product) {
@@ -31,7 +31,7 @@ namespace ZendeskSell.Products {
             var request = new RestRequest("products", Method.POST) { RequestFormat = DataFormat.Json };
             request.JsonSerializer = new RestSharpJsonNetSerializer(includeNullValues: false);
             request.AddJsonBody(new ZendeskSellRequest<ProductRequest>(product));
-            return (await _client.ExecuteTaskAsync<ZendeskSellObjectResponse<ProductResponse>>(request, Method.POST)).Data;
+            return (await _client.ExecuteAsync<ZendeskSellObjectResponse<ProductResponse>>(request, Method.POST)).Data;
         }
 
         public async Task<ZendeskSellObjectResponse<ProductResponse>> UpdateAsync(int id, ProductRequest product) {
@@ -41,12 +41,12 @@ namespace ZendeskSell.Products {
             var request = new RestRequest($"products/{id}", Method.PUT) { RequestFormat = DataFormat.Json };
             request.JsonSerializer = new RestSharpJsonNetSerializer(includeNullValues: false);
             request.AddJsonBody(new ZendeskSellRequest<ProductRequest>(product));
-            return (await _client.ExecuteTaskAsync<ZendeskSellObjectResponse<ProductResponse>>(request, Method.PUT)).Data;
+            return (await _client.ExecuteAsync<ZendeskSellObjectResponse<ProductResponse>>(request, Method.PUT)).Data;
         }
 
         public async Task<ZendeskSellDeleteResponse> DeleteAsync(int id) {
             var request = new RestRequest($"products/{id}", Method.DELETE);
-            return (await _client.ExecuteTaskAsync<ZendeskSellDeleteResponse>(request, Method.DELETE)).Data;
+            return (await _client.ExecuteAsync<ZendeskSellDeleteResponse>(request, Method.DELETE)).Data;
         }
     }
 }

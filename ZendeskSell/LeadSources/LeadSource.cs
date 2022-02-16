@@ -1,5 +1,6 @@
 using System;
 using Newtonsoft.Json;
+using ZendeskSell.Utils;
 
 namespace ZendeskSell.LeadSources {
     public class LeadSourceRequest {

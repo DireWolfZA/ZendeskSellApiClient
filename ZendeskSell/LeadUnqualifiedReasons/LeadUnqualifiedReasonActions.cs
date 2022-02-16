@@ -15,7 +15,7 @@ namespace ZendeskSell.LeadUnqualifiedReasons {
             var request = new RestRequest("lead_unqualified_reasons", Method.GET)
                               .AddParameter("page", pageNumber)
                               .AddParameter("per_page", numPerPage);
-            return (await _client.ExecuteTaskAsync<ZendeskSellCollectionResponse<LeadUnqualifiedReasonResponse>>(request, Method.GET)).Data;
+            return (await _client.ExecuteAsync<ZendeskSellCollectionResponse<LeadUnqualifiedReasonResponse>>(request, Method.GET)).Data;
         }
     }
 }

@@ -15,7 +15,7 @@ namespace ZendeskSell.Stages {
             var request = new RestRequest("stages", Method.GET)
                               .AddParameter("page", pageNumber)
                               .AddParameter("per_page", numPerPage);
-            return (await _client.ExecuteTaskAsync<ZendeskSellCollectionResponse<StageResponse>>(request, Method.GET)).Data;
+            return (await _client.ExecuteAsync<ZendeskSellCollectionResponse<StageResponse>>(request, Method.GET)).Data;
         }
     }
 }
