@@ -7,6 +7,7 @@ namespace ZendeskSell.Notes {
         public NoteRequest(NoteRequest source) : this() => ClassCopier.Copy(source, this);
         public NoteRequest() {
             Tags = new string[] { };
+            Type = "regular";
         }
 
         [JsonProperty("resource_type")]
