@@ -15,7 +15,7 @@ namespace ZendeskSell.Deals {
         [JsonProperty("last_stage_change_by_id")]
         public int? LastStageChangeByID { get; set; }
         [JsonProperty("last_activity_at")]
-        public DateTimeOffset LastActivityAt { get; set; }
+        public DateTimeOffset? LastActivityAt { get; set; }
         [JsonProperty("dropbox_email")]
         public string DropboxEmail { get; set; }
         [JsonProperty("organization_id")]
