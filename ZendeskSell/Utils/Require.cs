@@ -1,6 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace ZendeskSell.Utils {
     // Copied from old version of RestSharp.Validation

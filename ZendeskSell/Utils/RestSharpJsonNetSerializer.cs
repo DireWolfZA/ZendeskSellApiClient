@@ -5,17 +5,17 @@ using RestSharp.Serializers;
 namespace ZendeskSell.Utils {
     /// <summary>
     /// Default JSON serializer for request bodies
-    /// Doesn't currently use the SerializeAs attribute, defers to Newtonsoft's attributes
+    /// <br/>Doesn't currently use the <see cref="SerializeAsAttribute"/>, defers to Newtonsoft's attributes
     /// </summary>
     public class RestSharpJsonNetSerializer : ISerializer {
-        private readonly Newtonsoft.Json.JsonSerializer _serializer;
+        private readonly JsonSerializer _serializer;
 
         /// <summary>
         /// Default serializer
         /// </summary>
         public RestSharpJsonNetSerializer(bool includeNullValues = true) {
             ContentType = "application/json";
-            _serializer = new Newtonsoft.Json.JsonSerializer {
+            _serializer = new JsonSerializer {
                 MissingMemberHandling = MissingMemberHandling.Ignore,
                 NullValueHandling = includeNullValues ? NullValueHandling.Include : NullValueHandling.Ignore,
                 DefaultValueHandling = DefaultValueHandling.Include,
@@ -25,7 +25,7 @@ namespace ZendeskSell.Utils {
         /// <summary>
         /// Default serializer with overload for allowing custom Json.NET settings
         /// </summary>
-        public RestSharpJsonNetSerializer(Newtonsoft.Json.JsonSerializer serializer) {
+        public RestSharpJsonNetSerializer(JsonSerializer serializer) {
             ContentType = "application/json";
             _serializer = serializer;
         }

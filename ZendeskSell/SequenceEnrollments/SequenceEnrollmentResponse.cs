@@ -4,6 +4,8 @@ using ZendeskSell.Models;
 
 namespace ZendeskSell.SequenceEnrollments {
     public class SequenceEnrollmentResponse {
+        public string GetLink() => $"https://app.futuresimple.com/settings/sequences/{ID}";
+
         [JsonProperty("id")]
         public int ID { get; set; }
         [JsonProperty("actor_id")]
