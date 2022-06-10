@@ -35,10 +35,18 @@ namespace ZendeskSell.Contacts {
             return (await _client.ExecuteAsync<ZendeskSellObjectResponse<ContactResponse>>(request, Method.GET)).Data;
         }
 
+        private bool addressIsEmpty(Address address) =>
+            address == null || address.Line1 == null && address.City == null && address.State == null && address.PostalCode == null && address.Country == null;
+
         public async Task<ZendeskSellObjectResponse<ContactResponse>> CreateAsync(ContactRequest contact) {
             Require.Argument("CustomerStatus", contact.CustomerStatus);
             Require.Argument("ProspectStatus", contact.ProspectStatus);
             Require.Argument("LastName", contact.LastName);
+
+            if (addressIsEmpty(contact.ShippingAddress))
+                contact.ShippingAddress = null;
+            if (addressIsEmpty(contact.BillingAddress))
+                contact.BillingAddress = null;
 
             var request = new RestRequest("contacts", Method.POST) { RequestFormat = DataFormat.Json };
             request.JsonSerializer = new RestSharpJsonNetSerializer();
@@ -49,6 +57,11 @@ namespace ZendeskSell.Contacts {
         public async Task<ZendeskSellObjectResponse<ContactResponse>> UpdateAsync(int id, ContactRequest contact) {
             Require.Argument("CustomerStatus", contact.CustomerStatus);
             Require.Argument("ProspectStatus", contact.ProspectStatus);
+
+            if (addressIsEmpty(contact.ShippingAddress))
+                contact.ShippingAddress = null;
+            if (addressIsEmpty(contact.BillingAddress))
+                contact.BillingAddress = null;
 
             var request = new RestRequest($"contacts/{id}", Method.PUT) { RequestFormat = DataFormat.Json };
             request.JsonSerializer = new RestSharpJsonNetSerializer();
