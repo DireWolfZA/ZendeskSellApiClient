@@ -1,3 +1,4 @@
+using ZendeskSell.Collaborations;
 using ZendeskSell.Contacts;
 using ZendeskSell.CustomFields;
 using ZendeskSell.DealLossReasons;
@@ -19,6 +20,8 @@ using ZendeskSell.Users;
 
 namespace ZendeskSell {
     public interface IZendeskSellClient {
+        ICollaborationActions Collaborations { get; }
+
         IContactActions Contacts { get; }
 
         ICustomFieldActions CustomFields { get; }

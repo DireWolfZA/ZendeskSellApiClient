@@ -1,4 +1,5 @@
 using RestSharp;
+using ZendeskSell.Collaborations;
 using ZendeskSell.Contacts;
 using ZendeskSell.CustomFields;
 using ZendeskSell.DealLossReasons;
@@ -34,6 +35,8 @@ namespace ZendeskSell {
                 .AddDefaultHeader("Accept", "application/json")
                 .AddDefaultHeader("Content-Type", "application/json");
         }
+
+        public ICollaborationActions Collaborations => new CollaborationActions(_client);
 
         public IContactActions Contacts => new ContactActions(_client);
 
