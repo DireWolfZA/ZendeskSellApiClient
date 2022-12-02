@@ -6,6 +6,7 @@ using ZendeskSell.DealLossReasons;
 using ZendeskSell.Deals;
 using ZendeskSell.DealSources;
 using ZendeskSell.DealUnqualifiedReasons;
+using ZendeskSell.Documents;
 using ZendeskSell.LeadConversions;
 using ZendeskSell.Leads;
 using ZendeskSell.LeadSources;
@@ -46,6 +47,8 @@ namespace ZendeskSell {
         public IDealSourceActions DealSources => new DealSourceActions(_client);
         public IDealLossReasonActions DealLossReasons => new DealLossReasonActions(_client);
         public IDealUnqualifiedReasonActions DealUnqualifiedReasons => new DealUnqualifiedReasonActions(_client);
+
+        public IDocumentActions Documents => new DocumentActions(_client);
 
         public ILeadActions Leads => new LeadActions(_client);
         public ILeadSourceActions LeadSources => new LeadSourceActions(_client);
