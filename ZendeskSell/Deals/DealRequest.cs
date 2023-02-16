@@ -13,7 +13,7 @@ namespace ZendeskSell.Deals {
 
         [JsonProperty("value")]
         public string Value { get; set; }
-        public float GetValue() => float.Parse(Value, System.Globalization.NumberFormatInfo.InvariantInfo);
+        public decimal GetValue() => decimal.Parse(Value, System.Globalization.NumberFormatInfo.InvariantInfo);
 
         [JsonProperty("name")]
         public string Name { get; set; }
