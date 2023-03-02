@@ -1,3 +1,4 @@
+using ZendeskSell.AssociatedContacts;
 using ZendeskSell.Collaborations;
 using ZendeskSell.Contacts;
 using ZendeskSell.CustomFields;
@@ -31,6 +32,7 @@ namespace ZendeskSell {
         IDealSourceActions DealSources { get; }
         IDealLossReasonActions DealLossReasons { get; }
         IDealUnqualifiedReasonActions DealUnqualifiedReasons { get; }
+        IAssociatedContactActions AssociatedContacts { get; }
 
         IDocumentActions Documents { get; }
 

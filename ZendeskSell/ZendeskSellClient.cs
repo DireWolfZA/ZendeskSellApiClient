@@ -1,4 +1,5 @@
 using RestSharp;
+using ZendeskSell.AssociatedContacts;
 using ZendeskSell.Collaborations;
 using ZendeskSell.Contacts;
 using ZendeskSell.CustomFields;
@@ -47,6 +48,7 @@ namespace ZendeskSell {
         public IDealSourceActions DealSources => new DealSourceActions(_client);
         public IDealLossReasonActions DealLossReasons => new DealLossReasonActions(_client);
         public IDealUnqualifiedReasonActions DealUnqualifiedReasons => new DealUnqualifiedReasonActions(_client);
+        public IAssociatedContactActions AssociatedContacts => new AssociatedContactActions(_client);
 
         public IDocumentActions Documents => new DocumentActions(_client);
 
