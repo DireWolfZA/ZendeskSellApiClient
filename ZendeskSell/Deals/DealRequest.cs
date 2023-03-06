@@ -18,7 +18,7 @@ namespace ZendeskSell.Deals {
         [JsonProperty("name")]
         public string Name { get; set; }
         [JsonProperty("contact_id")]
-        public int ContactID { get; set; }
+        public long ContactID { get; set; }
         [JsonProperty("currency")]
         public string Currency { get; set; }
         [JsonProperty("owner_id")]

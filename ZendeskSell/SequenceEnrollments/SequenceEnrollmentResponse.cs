@@ -7,13 +7,13 @@ namespace ZendeskSell.SequenceEnrollments {
         public string GetLink() => $"https://app.futuresimple.com/settings/sequences/{ID}";
 
         [JsonProperty("id")]
-        public int ID { get; set; }
+        public long ID { get; set; }
         [JsonProperty("actor_id")]
         public int ActorID { get; set; }
         [JsonProperty("resource_type")]
         public string ResourceType { get; set; }
         [JsonProperty("resource_id")]
-        public int ResourceID { get; set; }
+        public long ResourceID { get; set; }
         [JsonProperty("created_at")]
         public DateTimeOffset CreatedAt { get; set; }
         [JsonProperty("updated_at")]
@@ -36,7 +36,7 @@ namespace ZendeskSell.SequenceEnrollments {
 
     public class Sequence {
         [JsonProperty("id")]
-        public int ID { get; set; }
+        public long ID { get; set; }
         [JsonProperty("name")]
         public string Name { get; set; }
         [JsonProperty("steps_total")]

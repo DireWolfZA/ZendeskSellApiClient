@@ -9,7 +9,7 @@ namespace ZendeskSell.Deals {
         public string GetLink() => $"https://app.futuresimple.com/sales/deals/{ID}";
 
         [JsonProperty("id")]
-        public int ID { get; set; }
+        public long ID { get; set; }
         [JsonProperty("creator_id")]
         public int CreatorID { get; set; }
         [JsonProperty("last_stage_change_by_id")]

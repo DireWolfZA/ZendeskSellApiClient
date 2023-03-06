@@ -13,7 +13,7 @@ namespace ZendeskSell.Notes {
         [JsonProperty("resource_type")]
         public string ResourceType { get; set; }
         [JsonProperty("resource_id")]
-        public int ResourceID { get; set; }
+        public long ResourceID { get; set; }
         [JsonProperty("content")]
         public string Content { get; set; }
         [JsonProperty("is_important")]

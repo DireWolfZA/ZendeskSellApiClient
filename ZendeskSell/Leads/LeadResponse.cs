@@ -9,7 +9,7 @@ namespace ZendeskSell.Leads {
         public string GetLink() => $"https://app.futuresimple.com/leads/{ID}";
 
         [JsonProperty("id")]
-        public int ID { get; set; }
+        public long ID { get; set; }
         [JsonProperty("creator_id")]
         public int CreatorID { get; set; }
         [JsonProperty("created_at")]

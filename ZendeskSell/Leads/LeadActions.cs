@@ -34,7 +34,7 @@ namespace ZendeskSell.Leads {
             return (await _client.ExecuteAsync<ZendeskSellCollectionResponse<LeadResponse>>(request, Method.GET)).Data;
         }
 
-        public async Task<ZendeskSellObjectResponse<LeadResponse>> GetOneAsync(int id) {
+        public async Task<ZendeskSellObjectResponse<LeadResponse>> GetOneAsync(long id) {
             var request = new RestRequest($"leads/{id}", Method.GET);
             return (await _client.ExecuteAsync<ZendeskSellObjectResponse<LeadResponse>>(request, Method.GET)).Data;
         }
@@ -46,14 +46,14 @@ namespace ZendeskSell.Leads {
             return (await _client.ExecuteAsync<ZendeskSellObjectResponse<LeadResponse>>(request, Method.POST)).Data;
         }
 
-        public async Task<ZendeskSellObjectResponse<LeadResponse>> UpdateAsync(int id, LeadRequest lead) {
+        public async Task<ZendeskSellObjectResponse<LeadResponse>> UpdateAsync(long id, LeadRequest lead) {
             var request = new RestRequest($"leads/{id}", Method.PUT) { RequestFormat = DataFormat.Json };
             request.JsonSerializer = new RestSharpJsonNetSerializer();
             request.AddJsonBody(new ZendeskSellRequest<LeadRequest>(lead));
             return (await _client.ExecuteAsync<ZendeskSellObjectResponse<LeadResponse>>(request, Method.PUT)).Data;
         }
 
-        public async Task<ZendeskSellDeleteResponse> DeleteAsync(int id) {
+        public async Task<ZendeskSellDeleteResponse> DeleteAsync(long id) {
             var request = new RestRequest($"leads/{id}", Method.DELETE);
             return (await _client.ExecuteAsync<ZendeskSellDeleteResponse>(request, Method.DELETE)).Data;
         }

@@ -4,9 +4,9 @@ using ZendeskSell.Models;
 namespace ZendeskSell.SequenceEnrollments {
     public interface ISequenceEnrollmentActions {
         Task<ZendeskSellCollectionResponse<SequenceEnrollmentResponse>> GetAsync(int pageNumber, int numPerPage, int[] ids = null, int[] resourceIDs = null, string resourceType = null);
-        Task<ZendeskSellObjectResponse<SequenceEnrollmentResponse>> GetOneAsync(int id);
+        Task<ZendeskSellObjectResponse<SequenceEnrollmentResponse>> GetOneAsync(long id);
         Task<ZendeskSellObjectResponse<SequenceEnrollmentResponse>> CreateAsync(SequenceEnrollmentCreateRequest enrollment);
-        Task<ZendeskSellObjectResponse<SequenceEnrollmentResponse>> UpdateAsync(int id, SequenceEnrollmentUpdateRequest enrollment);
-        Task<ZendeskSellObjectResponse<SequenceEnrollmentFinishResponse>> FinishOngoingForResourceAsync(int id, SequenceEnrollmentFinishRequest finishRequest);
+        Task<ZendeskSellObjectResponse<SequenceEnrollmentResponse>> UpdateAsync(long id, SequenceEnrollmentUpdateRequest enrollment);
+        Task<ZendeskSellObjectResponse<SequenceEnrollmentFinishResponse>> FinishOngoingForResourceAsync(long id, SequenceEnrollmentFinishRequest finishRequest);
     }
 }

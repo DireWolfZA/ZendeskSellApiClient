@@ -6,7 +6,7 @@ namespace ZendeskSell.SequenceEnrollments {
         [JsonProperty("resource_type")]
         public string ResourceType { get; set; }
         [JsonProperty("resource_id")]
-        public int ResourceID { get; set; }
+        public long ResourceID { get; set; }
         [JsonProperty("sequence_ids")]
         public int[] SequenceIDs { get; set; }
     }

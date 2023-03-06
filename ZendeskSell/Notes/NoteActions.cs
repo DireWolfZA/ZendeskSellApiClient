@@ -19,7 +19,7 @@ namespace ZendeskSell.Notes {
             return (await _client.ExecuteAsync<ZendeskSellCollectionResponse<NoteResponse>>(request, Method.GET)).Data;
         }
 
-        public async Task<ZendeskSellObjectResponse<NoteResponse>> GetOneAsync(int id) {
+        public async Task<ZendeskSellObjectResponse<NoteResponse>> GetOneAsync(long id) {
             var request = new RestRequest($"notes/{id}", Method.GET);
             return (await _client.ExecuteAsync<ZendeskSellObjectResponse<NoteResponse>>(request, Method.GET)).Data;
         }
@@ -35,7 +35,7 @@ namespace ZendeskSell.Notes {
             return (await _client.ExecuteAsync<ZendeskSellObjectResponse<NoteResponse>>(request, Method.POST)).Data;
         }
 
-        public async Task<ZendeskSellObjectResponse<NoteResponse>> UpdateAsync(int id, NoteRequest note) {
+        public async Task<ZendeskSellObjectResponse<NoteResponse>> UpdateAsync(long id, NoteRequest note) {
             Require.Argument("ResourceType", note.ResourceType);
             Require.Argument("ResourceID", note.ResourceID == 0 ? (object)null : note.ResourceID);
             Require.Argument("Content", note.Content);
@@ -46,7 +46,7 @@ namespace ZendeskSell.Notes {
             return (await _client.ExecuteAsync<ZendeskSellObjectResponse<NoteResponse>>(request, Method.PUT)).Data;
         }
 
-        public async Task<ZendeskSellDeleteResponse> DeleteAsync(int id) {
+        public async Task<ZendeskSellDeleteResponse> DeleteAsync(long id) {
             var request = new RestRequest($"notes/{id}", Method.DELETE);
             return (await _client.ExecuteAsync<ZendeskSellDeleteResponse>(request, Method.DELETE)).Data;
         }

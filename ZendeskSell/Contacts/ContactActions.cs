@@ -30,7 +30,7 @@ namespace ZendeskSell.Contacts {
             return (await _client.ExecuteAsync<ZendeskSellCollectionResponse<ContactResponse>>(request, Method.GET)).Data;
         }
 
-        public async Task<ZendeskSellObjectResponse<ContactResponse>> GetOneAsync(int id) {
+        public async Task<ZendeskSellObjectResponse<ContactResponse>> GetOneAsync(long id) {
             var request = new RestRequest($"contacts/{id}", Method.GET);
             return (await _client.ExecuteAsync<ZendeskSellObjectResponse<ContactResponse>>(request, Method.GET)).Data;
         }
@@ -54,7 +54,7 @@ namespace ZendeskSell.Contacts {
             return (await _client.ExecuteAsync<ZendeskSellObjectResponse<ContactResponse>>(request, Method.POST)).Data;
         }
 
-        public async Task<ZendeskSellObjectResponse<ContactResponse>> UpdateAsync(int id, ContactRequest contact) {
+        public async Task<ZendeskSellObjectResponse<ContactResponse>> UpdateAsync(long id, ContactRequest contact) {
             Require.Argument("CustomerStatus", contact.CustomerStatus);
             Require.Argument("ProspectStatus", contact.ProspectStatus);
 
@@ -69,7 +69,7 @@ namespace ZendeskSell.Contacts {
             return (await _client.ExecuteAsync<ZendeskSellObjectResponse<ContactResponse>>(request, Method.PUT)).Data;
         }
 
-        public async Task<ZendeskSellDeleteResponse> DeleteAsync(int id) {
+        public async Task<ZendeskSellDeleteResponse> DeleteAsync(long id) {
             var request = new RestRequest($"contacts/{id}", Method.DELETE);
             return (await _client.ExecuteAsync<ZendeskSellDeleteResponse>(request, Method.DELETE)).Data;
         }

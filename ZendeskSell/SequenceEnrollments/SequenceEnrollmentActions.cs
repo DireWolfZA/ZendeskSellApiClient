@@ -25,7 +25,7 @@ namespace ZendeskSell.SequenceEnrollments {
             return (await _client.ExecuteAsync<ZendeskSellCollectionResponse<SequenceEnrollmentResponse>>(request, Method.GET)).Data;
         }
 
-        public async Task<ZendeskSellObjectResponse<SequenceEnrollmentResponse>> GetOneAsync(int id) {
+        public async Task<ZendeskSellObjectResponse<SequenceEnrollmentResponse>> GetOneAsync(long id) {
             var request = new RestRequest($"sequence_enrollments/{id}", Method.GET);
             return (await _client.ExecuteAsync<ZendeskSellObjectResponse<SequenceEnrollmentResponse>>(request, Method.GET)).Data;
         }
@@ -39,7 +39,7 @@ namespace ZendeskSell.SequenceEnrollments {
             return (await _client.ExecuteAsync<ZendeskSellObjectResponse<SequenceEnrollmentResponse>>(request, Method.POST)).Data;
         }
 
-        public async Task<ZendeskSellObjectResponse<SequenceEnrollmentResponse>> UpdateAsync(int id, SequenceEnrollmentUpdateRequest updateRequest) {
+        public async Task<ZendeskSellObjectResponse<SequenceEnrollmentResponse>> UpdateAsync(long id, SequenceEnrollmentUpdateRequest updateRequest) {
             Require.Argument("State", updateRequest.State);
 
             var request = new RestRequest($"sequence_enrollments/{id}", Method.PUT) { RequestFormat = DataFormat.Json };
@@ -48,7 +48,7 @@ namespace ZendeskSell.SequenceEnrollments {
             return (await _client.ExecuteAsync<ZendeskSellObjectResponse<SequenceEnrollmentResponse>>(request, Method.PUT)).Data;
         }
 
-        public async Task<ZendeskSellObjectResponse<SequenceEnrollmentFinishResponse>> FinishOngoingForResourceAsync(int id, SequenceEnrollmentFinishRequest finishRequest) {
+        public async Task<ZendeskSellObjectResponse<SequenceEnrollmentFinishResponse>> FinishOngoingForResourceAsync(long id, SequenceEnrollmentFinishRequest finishRequest) {
             Require.Argument("ResourceType", finishRequest.ResourceType);
 
             var request = new RestRequest("sequence_enrollments/finish_ongoing_for_resource", Method.POST) { RequestFormat = DataFormat.Json };
