@@ -8,7 +8,7 @@ namespace ZendeskSell.Orders {
         public OrderRequest() { }
 
         [JsonProperty("deal_id")]
-        public int? DealID { get; set; }
+        public long? DealID { get; set; }
         [JsonProperty("discount")]
         public int? Discount { get; set; }
     }

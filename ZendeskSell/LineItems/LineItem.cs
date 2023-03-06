@@ -24,7 +24,7 @@ namespace ZendeskSell.LineItems {
         public LineItemResponse() : base() { }
 
         [JsonProperty("id")]
-        public int ID { get; set; }
+        public long ID { get; set; }
         [JsonProperty("name")]
         public string Name { get; set; }
         [JsonProperty("sku")]

@@ -12,7 +12,7 @@ namespace ZendeskSell.Documents {
         [JsonProperty("resource_type")]
         public string ResourceType { get; set; }
         [JsonProperty("resource_id")]
-        public int ResourceID { get; set; }
+        public long ResourceID { get; set; }
         [JsonProperty("creator_id")]
         public int CreatorID { get; set; }
         [JsonProperty("name")]

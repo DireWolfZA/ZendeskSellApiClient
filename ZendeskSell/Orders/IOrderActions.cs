@@ -3,7 +3,7 @@ using ZendeskSell.Models;
 
 namespace ZendeskSell.Orders {
     public interface IOrderActions {
-        Task<ZendeskSellCollectionResponse<OrderResponse>> GetAsync(int pageNumber, int numPerPage, int? dealID = null);
+        Task<ZendeskSellCollectionResponse<OrderResponse>> GetAsync(int pageNumber, int numPerPage, long? dealID = null);
         Task<ZendeskSellObjectResponse<OrderResponse>> GetOneAsync(int id);
         Task<ZendeskSellObjectResponse<OrderResponse>> CreateAsync(OrderRequest order);
         Task<ZendeskSellObjectResponse<OrderResponse>> UpdateAsync(int id, OrderRequest order);

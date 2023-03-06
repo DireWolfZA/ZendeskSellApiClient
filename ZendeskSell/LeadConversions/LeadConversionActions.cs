@@ -12,7 +12,7 @@ namespace ZendeskSell.LeadConversions {
             _client = client;
         }
 
-        public async Task<ZendeskSellCollectionResponse<LeadConversionResponse>> GetAsync(int pageNumber, int numPerPage, int? leadID = null, int? individualID = null, int? organizationID = null, int? dealID = null) {
+        public async Task<ZendeskSellCollectionResponse<LeadConversionResponse>> GetAsync(int pageNumber, int numPerPage, long? leadID = null, long? individualID = null, long? organizationID = null, long? dealID = null) {
             var request = new RestRequest("lead_conversions", Method.GET)
                               .AddParameter("page", pageNumber)
                               .AddParameter("per_page", numPerPage);

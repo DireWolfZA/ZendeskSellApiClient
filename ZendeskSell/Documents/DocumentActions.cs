@@ -11,7 +11,7 @@ namespace ZendeskSell.Documents {
             _client = client;
         }
 
-        public async Task<ZendeskSellCollectionResponse<DocumentResponse>> GetAsync(int pageNumber, int numPerPage, string resourceType, int resourceID, string sortBy = null, string ids = null, string name = null) {
+        public async Task<ZendeskSellCollectionResponse<DocumentResponse>> GetAsync(int pageNumber, int numPerPage, string resourceType, long resourceID, string sortBy = null, string ids = null, string name = null) {
             var request = new RestRequest("documents", Method.GET)
                               .AddParameter("page", pageNumber)
                               .AddParameter("per_page", numPerPage)

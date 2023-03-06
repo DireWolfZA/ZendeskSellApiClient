@@ -12,7 +12,7 @@ namespace ZendeskSell.Orders {
             _client = client;
         }
 
-        public async Task<ZendeskSellCollectionResponse<OrderResponse>> GetAsync(int pageNumber, int numPerPage, int? dealID = null) {
+        public async Task<ZendeskSellCollectionResponse<OrderResponse>> GetAsync(int pageNumber, int numPerPage, long? dealID = null) {
             var request = new RestRequest("orders", Method.GET)
                               .AddParameter("page", pageNumber)
                               .AddParameter("per_page", numPerPage);

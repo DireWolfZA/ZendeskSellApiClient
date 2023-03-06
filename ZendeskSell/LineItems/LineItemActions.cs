@@ -19,7 +19,7 @@ namespace ZendeskSell.LineItems {
             return (await _client.ExecuteAsync<ZendeskSellCollectionResponse<LineItemResponse>>(request, Method.GET)).Data;
         }
 
-        public async Task<ZendeskSellObjectResponse<LineItemResponse>> GetOneAsync(int orderID, int lineItemID) {
+        public async Task<ZendeskSellObjectResponse<LineItemResponse>> GetOneAsync(int orderID, long lineItemID) {
             var request = new RestRequest($"orders/{orderID}/line_items/{lineItemID}", Method.GET);
             return (await _client.ExecuteAsync<ZendeskSellObjectResponse<LineItemResponse>>(request, Method.GET)).Data;
         }
@@ -34,7 +34,7 @@ namespace ZendeskSell.LineItems {
             return (await _client.ExecuteAsync<ZendeskSellObjectResponse<LineItemResponse>>(request, Method.POST)).Data;
         }
 
-        public async Task<ZendeskSellDeleteResponse> DeleteAsync(int orderID, int lineItemID) {
+        public async Task<ZendeskSellDeleteResponse> DeleteAsync(int orderID, long lineItemID) {
             var request = new RestRequest($"orders/{orderID}/line_items/{lineItemID}", Method.DELETE);
             return (await _client.ExecuteAsync<ZendeskSellDeleteResponse>(request, Method.DELETE)).Data;
         }
