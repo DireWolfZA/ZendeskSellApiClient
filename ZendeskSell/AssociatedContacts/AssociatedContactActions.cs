@@ -12,14 +12,14 @@ namespace ZendeskSell.AssociatedContacts {
             _client = client;
         }
 
-        public async Task<ZendeskSellCollectionResponse<AssociatedContactResponse>> GetAsync(int pageNumber, int numPerPage, int dealID) {
+        public async Task<ZendeskSellCollectionResponse<AssociatedContactResponse>> GetAsync(int pageNumber, int numPerPage, long dealID) {
             var request = new RestRequest($"deals/{dealID}/associated_contacts", Method.GET)
                               .AddParameter("page", pageNumber)
                               .AddParameter("per_page", numPerPage);
             return (await _client.ExecuteAsync<ZendeskSellCollectionResponse<AssociatedContactResponse>>(request, Method.GET)).Data;
         }
 
-        public async Task<ZendeskSellObjectResponse<AssociatedContactResponse>> CreateAsync(int dealID, AssociatedContactRequest association) {
+        public async Task<ZendeskSellObjectResponse<AssociatedContactResponse>> CreateAsync(long dealID, AssociatedContactRequest association) {
             Require.Argument("ContactID", association.ContactID == 0 ? null : (object)association.ContactID);
             association.Role = association.Role ?? "involved";
 
@@ -29,7 +29,7 @@ namespace ZendeskSell.AssociatedContacts {
             return (await _client.ExecuteAsync<ZendeskSellObjectResponse<AssociatedContactResponse>>(request, Method.POST)).Data;
         }
 
-        public async Task<ZendeskSellDeleteResponse> DeleteAsync(int dealID, int contactID) {
+        public async Task<ZendeskSellDeleteResponse> DeleteAsync(long dealID, long contactID) {
             var request = new RestRequest($"deals/{dealID}/associated_contacts/{contactID}", Method.DELETE);
             return (await _client.ExecuteAsync<ZendeskSellDeleteResponse>(request, Method.DELETE)).Data;
         }

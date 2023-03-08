@@ -8,7 +8,7 @@ namespace ZendeskSell.AssociatedContacts {
         public AssociatedContactRequest() { }
 
         [JsonProperty("contact_id")]
-        public int ContactID { get; set; }
+        public long ContactID { get; set; }
         [JsonProperty("role")]
         public string Role { get; set; }
     }
