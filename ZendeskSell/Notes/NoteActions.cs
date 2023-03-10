@@ -16,12 +16,12 @@ namespace ZendeskSell.Notes {
             var request = new RestRequest("notes", Method.GET)
                               .AddParameter("page", pageNumber)
                               .AddParameter("per_page", numPerPage);
-            return (await _client.ExecuteAsync<ZendeskSellCollectionResponse<NoteResponse>>(request, Method.GET)).Data;
+            return RestResponseHandler.Handle(await _client.ExecuteAsync<ZendeskSellCollectionResponse<NoteResponse>>(request, Method.GET));
         }
 
         public async Task<ZendeskSellObjectResponse<NoteResponse>> GetOneAsync(long id) {
             var request = new RestRequest($"notes/{id}", Method.GET);
-            return (await _client.ExecuteAsync<ZendeskSellObjectResponse<NoteResponse>>(request, Method.GET)).Data;
+            return RestResponseHandler.Handle(await _client.ExecuteAsync<ZendeskSellObjectResponse<NoteResponse>>(request, Method.GET));
         }
 
         public async Task<ZendeskSellObjectResponse<NoteResponse>> CreateAsync(NoteRequest note) {
@@ -32,7 +32,7 @@ namespace ZendeskSell.Notes {
             var request = new RestRequest("notes", Method.POST) { RequestFormat = DataFormat.Json };
             request.JsonSerializer = new RestSharpJsonNetSerializer();
             request.AddJsonBody(new ZendeskSellRequest<NoteRequest>(note));
-            return (await _client.ExecuteAsync<ZendeskSellObjectResponse<NoteResponse>>(request, Method.POST)).Data;
+            return RestResponseHandler.Handle(await _client.ExecuteAsync<ZendeskSellObjectResponse<NoteResponse>>(request, Method.POST));
         }
 
         public async Task<ZendeskSellObjectResponse<NoteResponse>> UpdateAsync(long id, NoteRequest note) {
@@ -43,12 +43,12 @@ namespace ZendeskSell.Notes {
             var request = new RestRequest($"notes/{id}", Method.PUT) { RequestFormat = DataFormat.Json };
             request.JsonSerializer = new RestSharpJsonNetSerializer();
             request.AddJsonBody(new ZendeskSellRequest<NoteRequest>(note));
-            return (await _client.ExecuteAsync<ZendeskSellObjectResponse<NoteResponse>>(request, Method.PUT)).Data;
+            return RestResponseHandler.Handle(await _client.ExecuteAsync<ZendeskSellObjectResponse<NoteResponse>>(request, Method.PUT));
         }
 
         public async Task<ZendeskSellDeleteResponse> DeleteAsync(long id) {
             var request = new RestRequest($"notes/{id}", Method.DELETE);
-            return (await _client.ExecuteAsync<ZendeskSellDeleteResponse>(request, Method.DELETE)).Data;
+            return RestResponseHandler.Handle(await _client.ExecuteAsync<ZendeskSellDeleteResponse>(request, Method.DELETE));
         }
     }
 }

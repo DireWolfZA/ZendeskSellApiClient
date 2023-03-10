@@ -1,6 +1,7 @@
 using System.Threading.Tasks;
 using RestSharp;
 using ZendeskSell.Models;
+using ZendeskSell.Utils;
 
 //https://developer.zendesk.com/api-reference/sales-crm/resources/documents/
 namespace ZendeskSell.Documents {
@@ -23,11 +24,11 @@ namespace ZendeskSell.Documents {
                 request.AddParameter("ids", ids);
             if (name != null)
                 request.AddParameter("name", name);
-            return (await _client.ExecuteAsync<ZendeskSellCollectionResponse<DocumentResponse>>(request, Method.GET)).Data;
+            return RestResponseHandler.Handle(await _client.ExecuteAsync<ZendeskSellCollectionResponse<DocumentResponse>>(request, Method.GET));
         }
         public async Task<ZendeskSellObjectResponse<DocumentResponse>> GetOneAsync(int id) {
             var request = new RestRequest($"documents/{id}", Method.GET);
-            return (await _client.ExecuteAsync<ZendeskSellObjectResponse<DocumentResponse>>(request, Method.GET)).Data;
+            return RestResponseHandler.Handle(await _client.ExecuteAsync<ZendeskSellObjectResponse<DocumentResponse>>(request, Method.GET));
         }
     }
 }

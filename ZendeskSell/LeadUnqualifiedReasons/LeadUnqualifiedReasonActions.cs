@@ -1,6 +1,7 @@
 using System.Threading.Tasks;
 using RestSharp;
 using ZendeskSell.Models;
+using ZendeskSell.Utils;
 
 //https://developers.getbase.com/docs/rest/reference/lead_unqualified_reasons
 namespace ZendeskSell.LeadUnqualifiedReasons {
@@ -15,7 +16,7 @@ namespace ZendeskSell.LeadUnqualifiedReasons {
             var request = new RestRequest("lead_unqualified_reasons", Method.GET)
                               .AddParameter("page", pageNumber)
                               .AddParameter("per_page", numPerPage);
-            return (await _client.ExecuteAsync<ZendeskSellCollectionResponse<LeadUnqualifiedReasonResponse>>(request, Method.GET)).Data;
+            return RestResponseHandler.Handle(await _client.ExecuteAsync<ZendeskSellCollectionResponse<LeadUnqualifiedReasonResponse>>(request, Method.GET));
         }
     }
 }

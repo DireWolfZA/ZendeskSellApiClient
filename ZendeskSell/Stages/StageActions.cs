@@ -1,6 +1,7 @@
 using System.Threading.Tasks;
 using RestSharp;
 using ZendeskSell.Models;
+using ZendeskSell.Utils;
 
 //https://developers.getbase.com/docs/rest/reference/stages
 namespace ZendeskSell.Stages {
@@ -15,7 +16,7 @@ namespace ZendeskSell.Stages {
             var request = new RestRequest("stages", Method.GET)
                               .AddParameter("page", pageNumber)
                               .AddParameter("per_page", numPerPage);
-            return (await _client.ExecuteAsync<ZendeskSellCollectionResponse<StageResponse>>(request, Method.GET)).Data;
+            return RestResponseHandler.Handle(await _client.ExecuteAsync<ZendeskSellCollectionResponse<StageResponse>>(request, Method.GET));
         }
     }
 }

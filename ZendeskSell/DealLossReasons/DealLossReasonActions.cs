@@ -16,31 +16,31 @@ namespace ZendeskSell.DealLossReasons {
             var request = new RestRequest("loss_reasons", Method.GET)
                               .AddParameter("page", pageNumber)
                               .AddParameter("per_page", numPerPage);
-            return (await _client.ExecuteAsync<ZendeskSellCollectionResponse<DealLossReasonResponse>>(request, Method.GET)).Data;
+            return RestResponseHandler.Handle(await _client.ExecuteAsync<ZendeskSellCollectionResponse<DealLossReasonResponse>>(request, Method.GET));
         }
 
         public async Task<ZendeskSellObjectResponse<DealLossReasonResponse>> GetOneAsync(int id) {
             var request = new RestRequest($"loss_reasons/{id}", Method.GET);
-            return (await _client.ExecuteAsync<ZendeskSellObjectResponse<DealLossReasonResponse>>(request, Method.GET)).Data;
+            return RestResponseHandler.Handle(await _client.ExecuteAsync<ZendeskSellObjectResponse<DealLossReasonResponse>>(request, Method.GET));
         }
 
         public async Task<ZendeskSellObjectResponse<DealLossReasonResponse>> CreateAsync(DealLossReasonRequest reason) {
             var request = new RestRequest("loss_reasons", Method.POST) { RequestFormat = DataFormat.Json };
             request.JsonSerializer = new RestSharpJsonNetSerializer();
             request.AddJsonBody(new ZendeskSellRequest<DealLossReasonRequest>(reason));
-            return (await _client.ExecuteAsync<ZendeskSellObjectResponse<DealLossReasonResponse>>(request, Method.POST)).Data;
+            return RestResponseHandler.Handle(await _client.ExecuteAsync<ZendeskSellObjectResponse<DealLossReasonResponse>>(request, Method.POST));
         }
 
         public async Task<ZendeskSellObjectResponse<DealLossReasonResponse>> UpdateAsync(int id, DealLossReasonRequest reason) {
             var request = new RestRequest($"loss_reasons/{id}", Method.PUT) { RequestFormat = DataFormat.Json };
             request.JsonSerializer = new RestSharpJsonNetSerializer();
             request.AddJsonBody(new ZendeskSellRequest<DealLossReasonRequest>(reason));
-            return (await _client.ExecuteAsync<ZendeskSellObjectResponse<DealLossReasonResponse>>(request, Method.PUT)).Data;
+            return RestResponseHandler.Handle(await _client.ExecuteAsync<ZendeskSellObjectResponse<DealLossReasonResponse>>(request, Method.PUT));
         }
 
         public async Task<ZendeskSellDeleteResponse> DeleteAsync(int id) {
             var request = new RestRequest($"loss_reasons/{id}", Method.DELETE);
-            return (await _client.ExecuteAsync<ZendeskSellDeleteResponse>(request, Method.DELETE)).Data;
+            return RestResponseHandler.Handle(await _client.ExecuteAsync<ZendeskSellDeleteResponse>(request, Method.DELETE));
         }
     }
 }

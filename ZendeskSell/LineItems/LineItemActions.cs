@@ -16,12 +16,12 @@ namespace ZendeskSell.LineItems {
             var request = new RestRequest($"orders/{orderID}/line_items", Method.GET)
                               .AddParameter("page", pageNumber)
                               .AddParameter("per_page", numPerPage);
-            return (await _client.ExecuteAsync<ZendeskSellCollectionResponse<LineItemResponse>>(request, Method.GET)).Data;
+            return RestResponseHandler.Handle(await _client.ExecuteAsync<ZendeskSellCollectionResponse<LineItemResponse>>(request, Method.GET));
         }
 
         public async Task<ZendeskSellObjectResponse<LineItemResponse>> GetOneAsync(int orderID, long lineItemID) {
             var request = new RestRequest($"orders/{orderID}/line_items/{lineItemID}", Method.GET);
-            return (await _client.ExecuteAsync<ZendeskSellObjectResponse<LineItemResponse>>(request, Method.GET)).Data;
+            return RestResponseHandler.Handle(await _client.ExecuteAsync<ZendeskSellObjectResponse<LineItemResponse>>(request, Method.GET));
         }
 
         public async Task<ZendeskSellObjectResponse<LineItemResponse>> CreateAsync(int orderID, LineItemRequest lineItem) {
@@ -31,12 +31,12 @@ namespace ZendeskSell.LineItems {
             var request = new RestRequest($"orders/{orderID}/line_items", Method.POST) { RequestFormat = DataFormat.Json };
             request.JsonSerializer = new RestSharpJsonNetSerializer(includeNullValues: false);
             request.AddJsonBody(new ZendeskSellRequest<LineItemRequest>(lineItem));
-            return (await _client.ExecuteAsync<ZendeskSellObjectResponse<LineItemResponse>>(request, Method.POST)).Data;
+            return RestResponseHandler.Handle(await _client.ExecuteAsync<ZendeskSellObjectResponse<LineItemResponse>>(request, Method.POST));
         }
 
         public async Task<ZendeskSellDeleteResponse> DeleteAsync(int orderID, long lineItemID) {
             var request = new RestRequest($"orders/{orderID}/line_items/{lineItemID}", Method.DELETE);
-            return (await _client.ExecuteAsync<ZendeskSellDeleteResponse>(request, Method.DELETE)).Data;
+            return RestResponseHandler.Handle(await _client.ExecuteAsync<ZendeskSellDeleteResponse>(request, Method.DELETE));
         }
     }
 }

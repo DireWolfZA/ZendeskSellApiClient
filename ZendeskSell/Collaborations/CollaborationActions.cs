@@ -22,12 +22,12 @@ namespace ZendeskSell.Collaborations {
                 request.AddParameter("resource_id", resourceID);
             if (resourceType != null)
                 request.AddParameter("resource_type", resourceType);
-            return (await _client.ExecuteAsync<ZendeskSellCollectionResponse<CollaborationResponse>>(request, Method.GET)).Data;
+            return RestResponseHandler.Handle(await _client.ExecuteAsync<ZendeskSellCollectionResponse<CollaborationResponse>>(request, Method.GET));
         }
 
         public async Task<ZendeskSellObjectResponse<CollaborationResponse>> GetOneAsync(int id) {
             var request = new RestRequest($"collaborations/{id}", Method.GET);
-            return (await _client.ExecuteAsync<ZendeskSellObjectResponse<CollaborationResponse>>(request, Method.GET)).Data;
+            return RestResponseHandler.Handle(await _client.ExecuteAsync<ZendeskSellObjectResponse<CollaborationResponse>>(request, Method.GET));
         }
 
         public async Task<ZendeskSellObjectResponse<CollaborationResponse>> CreateAsync(CollaborationRequest collaboration) {
@@ -38,12 +38,12 @@ namespace ZendeskSell.Collaborations {
             var request = new RestRequest("collaborations", Method.POST) { RequestFormat = DataFormat.Json };
             request.JsonSerializer = new RestSharpJsonNetSerializer();
             request.AddJsonBody(new ZendeskSellRequest<CollaborationRequest>(collaboration));
-            return (await _client.ExecuteAsync<ZendeskSellObjectResponse<CollaborationResponse>>(request, Method.POST)).Data;
+            return RestResponseHandler.Handle(await _client.ExecuteAsync<ZendeskSellObjectResponse<CollaborationResponse>>(request, Method.POST));
         }
 
         public async Task<ZendeskSellDeleteResponse> DeleteAsync(int id) {
             var request = new RestRequest($"collaborations/{id}", Method.DELETE);
-            return (await _client.ExecuteAsync<ZendeskSellDeleteResponse>(request, Method.DELETE)).Data;
+            return RestResponseHandler.Handle(await _client.ExecuteAsync<ZendeskSellDeleteResponse>(request, Method.DELETE));
         }
     }
 }

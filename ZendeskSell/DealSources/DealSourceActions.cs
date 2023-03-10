@@ -16,12 +16,12 @@ namespace ZendeskSell.DealSources {
             var request = new RestRequest("deal_sources", Method.GET)
                               .AddParameter("page", pageNumber)
                               .AddParameter("per_page", numPerPage);
-            return (await _client.ExecuteAsync<ZendeskSellCollectionResponse<DealSourceResponse>>(request, Method.GET)).Data;
+            return RestResponseHandler.Handle(await _client.ExecuteAsync<ZendeskSellCollectionResponse<DealSourceResponse>>(request, Method.GET));
         }
 
         public async Task<ZendeskSellObjectResponse<DealSourceResponse>> GetOneAsync(int id) {
             var request = new RestRequest($"deal_sources/{id}", Method.GET);
-            return (await _client.ExecuteAsync<ZendeskSellObjectResponse<DealSourceResponse>>(request, Method.GET)).Data;
+            return RestResponseHandler.Handle(await _client.ExecuteAsync<ZendeskSellObjectResponse<DealSourceResponse>>(request, Method.GET));
         }
 
         public async Task<ZendeskSellObjectResponse<DealSourceResponse>> CreateAsync(DealSourceRequest dealSource) {
@@ -31,7 +31,7 @@ namespace ZendeskSell.DealSources {
             var request = new RestRequest("deal_sources", Method.POST) { RequestFormat = DataFormat.Json };
             request.JsonSerializer = new RestSharpJsonNetSerializer();
             request.AddJsonBody(new ZendeskSellRequest<DealSourceRequest>(dealSource));
-            return (await _client.ExecuteAsync<ZendeskSellObjectResponse<DealSourceResponse>>(request, Method.POST)).Data;
+            return RestResponseHandler.Handle(await _client.ExecuteAsync<ZendeskSellObjectResponse<DealSourceResponse>>(request, Method.POST));
         }
 
         public async Task<ZendeskSellObjectResponse<DealSourceResponse>> UpdateAsync(int id, DealSourceRequest dealSource) {
@@ -41,12 +41,12 @@ namespace ZendeskSell.DealSources {
             var request = new RestRequest($"deal_sources/{id}", Method.PUT) { RequestFormat = DataFormat.Json };
             request.JsonSerializer = new RestSharpJsonNetSerializer();
             request.AddJsonBody(new ZendeskSellRequest<DealSourceRequest>(dealSource));
-            return (await _client.ExecuteAsync<ZendeskSellObjectResponse<DealSourceResponse>>(request, Method.PUT)).Data;
+            return RestResponseHandler.Handle(await _client.ExecuteAsync<ZendeskSellObjectResponse<DealSourceResponse>>(request, Method.PUT));
         }
 
         public async Task<ZendeskSellDeleteResponse> DeleteAsync(int id) {
             var request = new RestRequest($"deal_sources/{id}", Method.DELETE);
-            return (await _client.ExecuteAsync<ZendeskSellDeleteResponse>(request, Method.DELETE)).Data;
+            return RestResponseHandler.Handle(await _client.ExecuteAsync<ZendeskSellDeleteResponse>(request, Method.DELETE));
         }
     }
 }

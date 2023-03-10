@@ -1,6 +1,7 @@
 using System.Threading.Tasks;
 using RestSharp;
 using ZendeskSell.Models;
+using ZendeskSell.Utils;
 
 //https://developers.getbase.com/docs/rest/reference/users
 namespace ZendeskSell.Users {
@@ -26,17 +27,17 @@ namespace ZendeskSell.Users {
                 request.AddParameter("confirmed", confirmed.ToString().ToLowerInvariant()); // zendesk sell API requires lowercase boolean values...
             if (email != null)
                 request.AddParameter("email", email);
-            return (await _client.ExecuteAsync<ZendeskSellCollectionResponse<UserResponse>>(request, Method.GET)).Data;
+            return RestResponseHandler.Handle(await _client.ExecuteAsync<ZendeskSellCollectionResponse<UserResponse>>(request, Method.GET));
         }
 
         public async Task<ZendeskSellObjectResponse<UserResponse>> GetOneAsync(int id) {
             var request = new RestRequest($"users/{id}", Method.GET);
-            return (await _client.ExecuteAsync<ZendeskSellObjectResponse<UserResponse>>(request, Method.GET)).Data;
+            return RestResponseHandler.Handle(await _client.ExecuteAsync<ZendeskSellObjectResponse<UserResponse>>(request, Method.GET));
         }
 
         public async Task<ZendeskSellObjectResponse<UserResponse>> GetCurrentAsync() {
             var request = new RestRequest($"users/self", Method.GET);
-            return (await _client.ExecuteAsync<ZendeskSellObjectResponse<UserResponse>>(request, Method.GET)).Data;
+            return RestResponseHandler.Handle(await _client.ExecuteAsync<ZendeskSellObjectResponse<UserResponse>>(request, Method.GET));
         }
     }
 }

@@ -22,12 +22,12 @@ namespace ZendeskSell.SequenceEnrollments {
                 request.AddParameter("resource_ids", string.Join(",", resourceIDs));
             if (resourceType != null)
                 request.AddParameter("resource_type", resourceType);
-            return (await _client.ExecuteAsync<ZendeskSellCollectionResponse<SequenceEnrollmentResponse>>(request, Method.GET)).Data;
+            return RestResponseHandler.Handle(await _client.ExecuteAsync<ZendeskSellCollectionResponse<SequenceEnrollmentResponse>>(request, Method.GET));
         }
 
         public async Task<ZendeskSellObjectResponse<SequenceEnrollmentResponse>> GetOneAsync(long id) {
             var request = new RestRequest($"sequence_enrollments/{id}", Method.GET);
-            return (await _client.ExecuteAsync<ZendeskSellObjectResponse<SequenceEnrollmentResponse>>(request, Method.GET)).Data;
+            return RestResponseHandler.Handle(await _client.ExecuteAsync<ZendeskSellObjectResponse<SequenceEnrollmentResponse>>(request, Method.GET));
         }
 
         public async Task<ZendeskSellObjectResponse<SequenceEnrollmentResponse>> CreateAsync(SequenceEnrollmentCreateRequest createRequest) {
@@ -36,7 +36,7 @@ namespace ZendeskSell.SequenceEnrollments {
             var request = new RestRequest("sequence_enrollments", Method.POST) { RequestFormat = DataFormat.Json };
             request.JsonSerializer = new RestSharpJsonNetSerializer();
             request.AddJsonBody(new ZendeskSellRequest<SequenceEnrollmentCreateRequest>(createRequest));
-            return (await _client.ExecuteAsync<ZendeskSellObjectResponse<SequenceEnrollmentResponse>>(request, Method.POST)).Data;
+            return RestResponseHandler.Handle(await _client.ExecuteAsync<ZendeskSellObjectResponse<SequenceEnrollmentResponse>>(request, Method.POST));
         }
 
         public async Task<ZendeskSellObjectResponse<SequenceEnrollmentResponse>> UpdateAsync(long id, SequenceEnrollmentUpdateRequest updateRequest) {
@@ -45,7 +45,7 @@ namespace ZendeskSell.SequenceEnrollments {
             var request = new RestRequest($"sequence_enrollments/{id}", Method.PUT) { RequestFormat = DataFormat.Json };
             request.JsonSerializer = new RestSharpJsonNetSerializer();
             request.AddJsonBody(new ZendeskSellRequest<SequenceEnrollmentUpdateRequest>(updateRequest));
-            return (await _client.ExecuteAsync<ZendeskSellObjectResponse<SequenceEnrollmentResponse>>(request, Method.PUT)).Data;
+            return RestResponseHandler.Handle(await _client.ExecuteAsync<ZendeskSellObjectResponse<SequenceEnrollmentResponse>>(request, Method.PUT));
         }
 
         public async Task<ZendeskSellObjectResponse<SequenceEnrollmentFinishResponse>> FinishOngoingForResourceAsync(long id, SequenceEnrollmentFinishRequest finishRequest) {
@@ -54,7 +54,7 @@ namespace ZendeskSell.SequenceEnrollments {
             var request = new RestRequest("sequence_enrollments/finish_ongoing_for_resource", Method.POST) { RequestFormat = DataFormat.Json };
             request.JsonSerializer = new RestSharpJsonNetSerializer();
             request.AddJsonBody(new ZendeskSellRequest<SequenceEnrollmentFinishRequest>(finishRequest));
-            return (await _client.ExecuteAsync<ZendeskSellObjectResponse<SequenceEnrollmentFinishResponse>>(request, Method.POST)).Data;
+            return RestResponseHandler.Handle(await _client.ExecuteAsync<ZendeskSellObjectResponse<SequenceEnrollmentFinishResponse>>(request, Method.POST));
         }
     }
 }

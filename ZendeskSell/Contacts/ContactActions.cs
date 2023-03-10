@@ -27,12 +27,12 @@ namespace ZendeskSell.Contacts {
                 request.AddParameter("phone", phone);
             if (mobile != null)
                 request.AddParameter("mobile", mobile);
-            return (await _client.ExecuteAsync<ZendeskSellCollectionResponse<ContactResponse>>(request, Method.GET)).Data;
+            return RestResponseHandler.Handle(await _client.ExecuteAsync<ZendeskSellCollectionResponse<ContactResponse>>(request, Method.GET));
         }
 
         public async Task<ZendeskSellObjectResponse<ContactResponse>> GetOneAsync(long id) {
             var request = new RestRequest($"contacts/{id}", Method.GET);
-            return (await _client.ExecuteAsync<ZendeskSellObjectResponse<ContactResponse>>(request, Method.GET)).Data;
+            return RestResponseHandler.Handle(await _client.ExecuteAsync<ZendeskSellObjectResponse<ContactResponse>>(request, Method.GET));
         }
 
         private bool addressIsEmpty(Address address) =>
@@ -51,7 +51,7 @@ namespace ZendeskSell.Contacts {
             var request = new RestRequest("contacts", Method.POST) { RequestFormat = DataFormat.Json };
             request.JsonSerializer = new RestSharpJsonNetSerializer();
             request.AddJsonBody(new ZendeskSellRequest<ContactRequest>(contact));
-            return (await _client.ExecuteAsync<ZendeskSellObjectResponse<ContactResponse>>(request, Method.POST)).Data;
+            return RestResponseHandler.Handle(await _client.ExecuteAsync<ZendeskSellObjectResponse<ContactResponse>>(request, Method.POST));
         }
 
         public async Task<ZendeskSellObjectResponse<ContactResponse>> UpdateAsync(long id, ContactRequest contact) {
@@ -66,12 +66,12 @@ namespace ZendeskSell.Contacts {
             var request = new RestRequest($"contacts/{id}", Method.PUT) { RequestFormat = DataFormat.Json };
             request.JsonSerializer = new RestSharpJsonNetSerializer();
             request.AddJsonBody(new ZendeskSellRequest<ContactRequest>(contact));
-            return (await _client.ExecuteAsync<ZendeskSellObjectResponse<ContactResponse>>(request, Method.PUT)).Data;
+            return RestResponseHandler.Handle(await _client.ExecuteAsync<ZendeskSellObjectResponse<ContactResponse>>(request, Method.PUT));
         }
 
         public async Task<ZendeskSellDeleteResponse> DeleteAsync(long id) {
             var request = new RestRequest($"contacts/{id}", Method.DELETE);
-            return (await _client.ExecuteAsync<ZendeskSellDeleteResponse>(request, Method.DELETE)).Data;
+            return RestResponseHandler.Handle(await _client.ExecuteAsync<ZendeskSellDeleteResponse>(request, Method.DELETE));
         }
     }
 }

@@ -24,7 +24,7 @@ namespace ZendeskSell.LeadConversions {
                 request.AddParameter("organization_id", organizationID);
             if (dealID != null)
                 request.AddParameter("deal_id", dealID);
-            return (await _client.ExecuteAsync<ZendeskSellCollectionResponse<LeadConversionResponse>>(request, Method.GET)).Data;
+            return RestResponseHandler.Handle(await _client.ExecuteAsync<ZendeskSellCollectionResponse<LeadConversionResponse>>(request, Method.GET));
         }
         public async Task<ZendeskSellObjectResponse<LeadConversionResponse>> CreateAsync(LeadConversionRequest leadConversion) {
             Require.Argument("LeadID", leadConversion.LeadID == 0 ? null : (object)leadConversion.LeadID);
@@ -32,7 +32,7 @@ namespace ZendeskSell.LeadConversions {
             var request = new RestRequest("lead_conversions", Method.POST) { RequestFormat = DataFormat.Json };
             request.JsonSerializer = new RestSharpJsonNetSerializer();
             request.AddJsonBody(new ZendeskSellRequest<LeadConversionRequest>(leadConversion));
-            return (await _client.ExecuteAsync<ZendeskSellObjectResponse<LeadConversionResponse>>(request, Method.POST)).Data;
+            return RestResponseHandler.Handle(await _client.ExecuteAsync<ZendeskSellObjectResponse<LeadConversionResponse>>(request, Method.POST));
         }
     }
 }
