@@ -8,7 +8,7 @@ namespace ZendeskSell.Tasks {
         public TaskResponse() : base() { }
 
         [JsonProperty("id")]
-        public int ID { get; set; }
+        public long ID { get; set; }
         [JsonProperty("creator_id")]
         public int CreatorID { get; set; }
         [JsonProperty("completed_at")]

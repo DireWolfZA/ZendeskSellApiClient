@@ -16,7 +16,7 @@ namespace ZendeskSell.Tasks {
         [JsonProperty("resource_type")]
         public string ResourceType { get; set; }
         [JsonProperty("resource_id")]
-        public int ResourceID { get; set; }
+        public long ResourceID { get; set; }
         [JsonProperty("completed")]
         public bool Completed { get; set; }
         [JsonProperty("remind_at")]
