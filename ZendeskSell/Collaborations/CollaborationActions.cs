@@ -12,7 +12,7 @@ namespace ZendeskSell.Collaborations {
             _client = client;
         }
 
-        public async Task<ZendeskSellCollectionResponse<CollaborationResponse>> GetAsync(int pageNumber, int numPerPage, int? creatorID = null, int? resourceID = null, string resourceType = null) {
+        public async Task<ZendeskSellCollectionResponse<CollaborationResponse>> GetAsync(int pageNumber, int numPerPage, int? creatorID = null, long? resourceID = null, string resourceType = null) {
             var request = new RestRequest("collaborations", Method.GET)
                                 .AddParameter("page", pageNumber)
                                 .AddParameter("per_page", numPerPage);

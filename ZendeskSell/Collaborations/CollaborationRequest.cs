@@ -9,7 +9,7 @@ namespace ZendeskSell.Collaborations {
         [JsonProperty("resource_type")]
         public string ResourceType { get; set; }
         [JsonProperty("resource_id")]
-        public int ResourceID { get; set; }
+        public long ResourceID { get; set; }
         [JsonProperty("collaborator_id")]
         public int CollaboratorID { get; set; }
     }
