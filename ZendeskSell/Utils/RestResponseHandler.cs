@@ -13,7 +13,9 @@ namespace ZendeskSell.Utils {
                 throw ex;
             }
 
-            if (response.Content.StartsWith("<html>")) { // usually <html><head><title>504 Gateway Time-out</title></head><body><center><h1>504 Gateway Time-out</h1></center><hr><center>nginx</center></body></html>
+            if (response.Content.StartsWith("<html>")) {
+                // <html><head><title>504 Gateway Time-out</title></head><body><center><h1>504 Gateway Time-out</h1></center><hr><center>nginx</center></body></html>
+                // <html><head><title>500 Internal Server Error</title></head><body><center><h1>500 Internal Server Error</h1></center><hr><center>nginx</center></body></html>
                 const string titleTag = "<title>";
                 const string h1Tag = "<h1>";
                 int titleStartPosition = response.Content.IndexOf(titleTag) + titleTag.Length;
