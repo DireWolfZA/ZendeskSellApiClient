@@ -3,7 +3,7 @@ using ZendeskSell.Models;
 
 namespace ZendeskSell.Notes {
     public interface INoteActions {
-        Task<ZendeskSellCollectionResponse<NoteResponse>> GetAsync(int pageNumber, int numPerPage);
+        Task<ZendeskSellCollectionResponse<NoteResponse>> GetAsync(int pageNumber, int numPerPage, long? resourceID = null, string resourceType = null);
         Task<ZendeskSellObjectResponse<NoteResponse>> GetOneAsync(long id);
         Task<ZendeskSellObjectResponse<NoteResponse>> CreateAsync(NoteRequest note);
         Task<ZendeskSellObjectResponse<NoteResponse>> UpdateAsync(long id, NoteRequest note);

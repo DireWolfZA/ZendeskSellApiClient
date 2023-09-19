@@ -12,10 +12,14 @@ namespace ZendeskSell.Notes {
             _client = client;
         }
 
-        public async Task<ZendeskSellCollectionResponse<NoteResponse>> GetAsync(int pageNumber, int numPerPage) {
+        public async Task<ZendeskSellCollectionResponse<NoteResponse>> GetAsync(int pageNumber, int numPerPage, long? resourceID = null, string resourceType = null) {
             var request = new RestRequest("notes", Method.GET)
                               .AddParameter("page", pageNumber)
                               .AddParameter("per_page", numPerPage);
+            if (resourceID != null)
+                request.AddParameter("resource_id", resourceID);
+            if (resourceType != null)
+                request.AddParameter("resource_type", resourceType);
             return RestResponseHandler.Handle(await _client.ExecuteAsync<ZendeskSellCollectionResponse<NoteResponse>>(request, Method.GET));
         }
 
